@@ -2,48 +2,54 @@ import React, { Component } from 'react';
 // import { Route, withRouter, Link } from 'react-router-dom'
 import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux';
+
+import HeadlineNewsList from './components/HeadlineNewsList' 
+import API from './API'
+import { getNewsHeadlines } from './actions/newsActions'
+
 
 class App extends Component {
 
-  state = {
-    news: []
-  }
-
-componentDidMount() {
-  this.getNewsHeadlines()
-}
  
-  // move to API class 
-  getNewsHeadlines = () => {
-    if (this.state.news.length > 0) {
-      this.setState({ news: []})
-    }
-    return fetch('http://localhost:3000/api/v1/news_apis/')
-      .then(resp => resp.json())
+componentDidMount() {
+  API.getNewsHeadlines()
+    .then(articles => this.props.getNewsHeadlines(articles))
+}
 
-      .then(newsData => {
-        const news = newsData.articles.map(article => {
-          if (!article.author) {
-            return {...article, author: "Unknown"}
-          } else {
-            return article
-          }
-        })
-        this.setState({news: news})
-      }) 
-  } 
+  // move to API class 
+  // getNewsHeadlines = () => {
+  //   return fetch('http://localhost:3000/api/v1/news_apis/')
+  //     .then(resp => resp.json())
+  //     .then(newsData => {
+  //       const news = newsData.articles.map(article => {
+  //         if (!article.author) {
+  //           return {...article, author: "Unknown"}
+  //         } else {
+  //           return article
+  //         }
+  //       })
+  //       this.setState({news: news})
+  //     }) 
+  // } 
 
 
   render() {
     return (
       <div className="App">
         <img src={logo} className="App-logo " alt="logo" />
-        <ul> 
-          {this.state.news.map(article => <li>{article.author} </li>)}
-        </ul> 
+        <HeadlineNewsList /> 
       </div>
     )
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getNewsHeadlines: (news) => getNewsHeadlines(dispatch, news)
+    // action written explicitly here, rather than separated into a separate actions file 
+  }
+}
+
+
+export default connect(null, mapDispatchToProps)(App)
