@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import HeadlineNews from './HeadlineNews'
+import '../App.css';
 
 
 import { connect } from 'react-redux';
@@ -10,7 +11,7 @@ class HeadlineNewsList extends Component {
     console.log(this.props.news)
 
     return(
-      <div> 
+      <div  > 
         {this.props.news.map((article, index) => <HeadlineNews article={article} key={index} />)}
       </div> 
     ) 

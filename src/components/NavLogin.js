@@ -6,6 +6,7 @@ import SignupForm from './SignupForm'
 
 import { connect } from 'react-redux';
 import { signoutAction } from '../actions/authActions'
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
 
 // signout function
@@ -29,24 +30,30 @@ class NavLogin extends React.Component {
     const { login, signup }   = this.props
     const { signout } = this
     return(
-      <div>
-        {!this.props.loggedIn ? 
-          <div>
-              <Link to="/login">
-               <button className="btn btn-info">Log in</button>
-             </Link>
-             <Link to="/signup">
-               <button className="btn btn-info">Sign up</button>
-             </Link>
-          </div>
-          :
-          <div>
-            <div className="pr-3">Welcome, {this.props.firstName} </div>
-            <input type="button" className="btn btn-info" value="Log Out" 
-            onClick={signout} />
-          </div>
-        }
-      </div>
+
+        <Navbar className="fixedTop"> 
+          <Navbar.Header>
+            <a href="/">INVESTMENTS</a>
+          </Navbar.Header>
+          <Nav>
+              {!this.props.loggedIn ? 
+                  <div>
+                      <Link to="/login">
+                      <button className="btn btn-info">Log in</button>
+                    </Link>
+                    <Link to="/signup">
+                      <button className="btn btn-info">Sign up</button>
+                    </Link>
+                  </div>
+                  :
+                  <span>
+                    <div className="pr-3">Welcome, {this.props.firstName} </div>
+                    <input type="button" className="btn btn-info" value="Log Out" 
+                    onClick={signout} />
+                  </span>
+              }
+          </Nav>
+        </Navbar>
     )
   }
 

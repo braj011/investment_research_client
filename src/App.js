@@ -10,6 +10,7 @@ import { loginAction } from './actions/authActions'
 import NavLogin from './components/NavLogin';
 import MainContent from './components/MainContent';
 import SignupForm from './components/SignupForm';
+// import { Navbar } from 'react-bootstrap';
 
 
 class App extends Component {
@@ -48,7 +49,7 @@ class App extends Component {
     const { login, signup } = this
     return (
       <div className="App">
-      <NavLogin login={login} signup={signup} /> 
+        <NavLogin className="nav-bar" login={login} signup={signup} /> 
       {/* NOTE: routes potentially need to be from the App page + include withRouter if you're pushing history etc. / using props */}
         <Route exact path='/login' render={props => <LoginForm {...props} login={login} />} />
         <Route exact path='/signup' render={props => <SignupForm {...props} signup={signup}/>} />
@@ -58,6 +59,21 @@ class App extends Component {
     )
   }
 }
+
+
+
+{/* <div className="app">
+          <div className="scroller">
+            {items.map(({ name, image }) => {
+              return (
+                  <div className="item">
+                    <img src={image} />
+                    {name}
+                  </div>
+              );
+            })}
+          </div>
+      </div> */}
 
 
 const mapDispatchToProps = (dispatch) => {
