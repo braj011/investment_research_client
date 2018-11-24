@@ -1,13 +1,14 @@
 const defaultState = {
-  news: ["Yay!!!"]
+  news: []
 }
 
 
 export default function(state = defaultState, action)
 {
+  // console.log("News Reduc: ", state)
   switch (action.type) {
     case "GET_NEWS_HEADLINES":
-      console.log(action, state.news)
+      // console.log(action, state.news)
       return { news:  action.payload }
     default:
       return state

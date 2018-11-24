@@ -19,7 +19,7 @@ class HeadlineNewsList extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { news: state.news }
+  return { news: state.newsStore.news }
 }
 
 export default connect(mapStateToProps)(HeadlineNewsList)
