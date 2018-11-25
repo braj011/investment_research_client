@@ -10,6 +10,7 @@ import { loginAction } from './actions/authActions'
 import NavLogin from './components/NavLogin';
 import MainContent from './components/MainContent';
 import SignupForm from './components/SignupForm';
+import Profile from './components/Profile'
 // import { Navbar } from 'react-bootstrap';
 
 
@@ -36,7 +37,7 @@ class App extends Component {
       this.props.loginAction(user)
       // console.log("User:", user, "Logged in...")
       //  PLACEHOLDER until PROFILE PAGE COMPLETE
-      this.props.history.push('/')
+      this.props.history.push('/profile')
     }
   } 
 
@@ -53,28 +54,23 @@ class App extends Component {
       {/* NOTE: routes potentially need to be from the App page + include withRouter if you're pushing history etc. / using props */}
         <Route exact path='/login' render={props => <LoginForm {...props} login={login} />} />
         <Route exact path='/signup' render={props => <SignupForm {...props} signup={signup}/>} />
-        
-        <Route exact path ='/' render={() => <MainContent />} /> 
+        { !this.props.loggedIn ?
+          <Route exact path ='/' render={() => <MainContent />} /> 
+          :
+          <Route exact path ='/profile' render={() => <Profile />} /> 
+        } 
+
       </div>
     )
   }
 }
 
 
-
-{/* <div className="app">
-          <div className="scroller">
-            {items.map(({ name, image }) => {
-              return (
-                  <div className="item">
-                    <img src={image} />
-                    {name}
-                  </div>
-              );
-            })}
-          </div>
-      </div> */}
-
+const mapStateToProps = (state) => {
+  return { 
+    loggedIn: state.authStore.loggedIn  
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -85,4 +81,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default withRouter(connect(null, mapDispatchToProps)(App))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

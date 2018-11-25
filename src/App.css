@@ -27,8 +27,43 @@
   background: #aaa;
   margin: 2rem;
   overflow-y: scroll;
-
 }
+
+/* PROFILE CONTAINERS + sub components */
+.whole-profile-container {
+  display: flex;
+  margin: 2rem;
+  text-align: center;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.stock-list {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ddd;
+  /* width: 200px;     -  Didn't seem to work */
+}
+
+.specific-stock-news {
+  flex: 1;
+  background: #aaa;
+  overflow-y: scroll;
+}
+
+.stock-notes {
+  padding: 0;
+  flex: 1;
+  display: flex;
+  overflow-y: scroll;
+  height: 100vh;
+  justify-content: center;
+  /* align-items: center; */
+  background: #e7e7e7;
+}
+
 
 /* .scroller {
   margin: 0 auto;
@@ -57,3 +92,4 @@
   position: sticky;
   top: 2%;
 }
+
