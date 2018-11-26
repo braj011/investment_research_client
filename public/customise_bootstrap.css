@@ -1,0 +1,9 @@
+
+/* customise bootstrap css elements - using the right bootstrap terms / element names */
+
+
+/*  BUTTONS  */
+.btn {
+  margin: 5px; 
+  padding: 5px;
+}

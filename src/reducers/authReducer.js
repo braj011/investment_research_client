@@ -1,14 +1,16 @@
 const defaultState = {
   email: "",
   firstName: "",
-  loggedIn: false
+  loggedIn: false,
+  userID: ""
+  
 }
 
 export default function(state = defaultState, action)
 {
   switch (action.type) {
     case "LOGIN":
-      console.log("Auth Reduc: ", { firstName: action.payload.firstName , email: action.payload.email, loggedIn: true })
+      console.log("Auth Reduc: ", { firstName: action.payload.firstName , email: action.payload.email, loggedIn: true, userID: action.payload.userID })
       return { firstName: action.payload.firstName , email: action.payload.email, loggedIn: true }
     case "SIGNOUT":
       console.log('signed out')

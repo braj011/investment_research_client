@@ -32,26 +32,26 @@ class NavLogin extends React.Component {
     return(
 
         <Navbar className="fixedTop"> 
-          <Navbar.Header>
-            <a href="/">INVESTMENTS</a>
+          <Navbar.Header> 
+            <Link to="/">INVESTMENTS</Link> 
           </Navbar.Header>
           <Nav>
-              {!this.props.loggedIn ? 
-                  <div>
-                      <Link to="/login">
-                      <button className="btn btn-info">Log in</button>
-                    </Link>
-                    <Link to="/signup">
-                      <button className="btn btn-info">Sign up</button>
-                    </Link>
-                  </div>
-                  :
-                  <span>
-                    <div className="pr-3">Welcome, {this.props.firstName} </div>
-                    <input type="button" className="btn btn-info" value="Log Out" 
-                    onClick={signout} />
-                  </span>
-              }
+            {!this.props.loggedIn ? 
+                <NavItem>
+                    <Link to="/login">
+                    <button className="btn btn-info">Log in</button>
+                  </Link>
+                  <Link to="/signup">
+                    <button className="btn btn-info">Sign up</button>
+                  </Link>
+                </NavItem>
+                :
+                <NavItem>
+                  <span className="pr-3">Welcome, {this.props.firstName} </span>
+                  <input type="button" className="btn btn-info" value="Log Out" 
+                  onClick={signout} />
+                </NavItem>
+            }
           </Nav>
         </Navbar>
     )

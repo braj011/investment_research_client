@@ -20,6 +20,11 @@ export default class API  {
     this.loginUrl = this.baseUrl + '/login'
     this.signupUrl = this.baseUrl + '/signup'
     this.validateUrl = this.baseUrl + '/validate'
+
+    this.profileUrl = this.baseUrl + '/users'
+
+    this.stockUrl = this.baseUrl + '/stocks'
+    this.userStockUrl = this.baseUrl + '/user_stocks'
   }
 
   
@@ -28,7 +33,8 @@ export default class API  {
     const token = localStorage.getItem('token')
     return fetch(url, {
       headers: {'Authorization': token}
-    }).then(resp => resp.json())
+    })
+    .then(resp => resp.json())
   }
 
   static validate () {
@@ -59,6 +65,32 @@ export default class API  {
     }).then(resp => resp.json())
   }
 
+  static getProfile (id) {
+    return this.get(`${this.profileUrl}/${id}`)
+  }
+
+  //  STOCKS
+
+  static addStock (newStock) {
+    return fetch('this.stockUrl', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        'name': newStock
+      })
+    }).then(resp => resp.json())
+  } 
+
+  static createUserStock (stockID, userID){
+    return fetch('http://localhost:3000/categories_users/',  {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        'user': userID,
+        'stock': stockID
+      })
+    }).then(resp => resp.json())   
+  }   
 
 } 
 

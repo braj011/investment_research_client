@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import { Route, withRouter, Link } from 'react-router-dom'
 import '../App.css';
+import StockList from './ProfileComponents/StockList';
 
 class Profile extends Component {
 
@@ -19,7 +20,7 @@ class Profile extends Component {
         </header>
         <div className="whole-profile-container">
           <span className="stock-list">
-            Stock List
+            <StockList /> 
           </span>
 
           <span className="specific-stock-news">
