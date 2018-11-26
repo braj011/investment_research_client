@@ -8,7 +8,12 @@ state = {
   authStore: {
     email: "",
     firstName: "",
-    loggedIn: false
+    loggedIn: false,
+    userID: ""
+  },
+
+  stockStore: {
+    userStocks: []
   }
   
 }

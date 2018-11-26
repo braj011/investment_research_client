@@ -6,3 +6,11 @@ export function loadUserStocks(dispatch, user) {
     payload: user
   })
 }
+
+export function addNewStock(dispatch, newStock) {
+  console.log("adding new stock to user's stocklist")
+  dispatch({
+    type: 'ADD_NEW_STOCK',
+    payload: newStock
+  })
+}

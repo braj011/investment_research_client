@@ -72,17 +72,18 @@ export default class API  {
   //  STOCKS
 
   static addStock (newStock) {
-    return fetch('this.stockUrl', {
+    return fetch(this.stockUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         'name': newStock
       })
-    }).then(resp => resp.json())
+    })
+    .then(resp =>  resp.json())
   } 
 
   static createUserStock (stockID, userID){
-    return fetch('http://localhost:3000/categories_users/',  {
+    return fetch(this.userStockUrl,  {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
