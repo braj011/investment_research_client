@@ -40,20 +40,20 @@ class NavLogin extends React.Component {
           </Navbar.Header>
           <Nav>
             {!this.props.loggedIn ? 
-                <NavItem>
+                <div>
                     <Link to="/login">
                     <button className="btn btn-info">Log in</button>
                   </Link>
                   <Link to="/signup">
                     <button className="btn btn-info">Sign up</button>
                   </Link>
-                </NavItem>
+                </div>
                 :
-                <NavItem>
+                <div>
                   <span className="pr-3">Welcome, {this.props.firstName} </span>
                   <Button bsStyle="info" className="btn btn-info" onClick={signout}>Log Out</Button>
-                  
-                </NavItem>
+                </div>
+    
             }
           </Nav>
         </Navbar>

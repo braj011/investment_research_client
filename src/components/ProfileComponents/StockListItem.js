@@ -1,17 +1,20 @@
 import React from 'react'
-import { Button } from 'react-bootstrap' 
+import { Button } from 'semantic-ui-react' 
 
 
-const StockListItem = (props) => {
+class StockListItem extends React.Component {
 
-  return (
-    <div>
-      <Button bsStyle="primary" bsSize="large"> 
-        {props.stock.name}
-      </Button>
-      <br></br>
-    </div>
-  ) 
+  
+  render() {
+    return (
+      <div>
+        <Button onClick={() => this.props.selectStock(this.props.stock)} > 
+          {this.props.stock.name}
+        </Button>
+        <br></br>
+      </div>
+    ) 
+  } 
 
 } 
 

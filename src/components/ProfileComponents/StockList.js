@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import StockListItem from './StockListItem'
 import { connect } from 'react-redux';
-import { Button } from 'react-bootstrap' 
+import { Button } from 'semantic-ui-react' 
 
-import { addNewStock } from '../../actions/stockActions'
+import { addNewStock, selectStock } from '../../actions/stockActions'
 
 import API from '../../API'
 
@@ -12,14 +12,14 @@ class StockList extends Component {
   state = {
     addStockClick: false,
     newStock: ""
+    // selectedStock: ""
   }
   
-
   // Process of adding a stock 
 
   handleClick = () => {
     this.setState({ addStockClick: !this.state.addStockClick })
-  }
+}
 
   handleInput = (e) => {
     this.setState({ newStock: e.target.value })
@@ -35,10 +35,13 @@ class StockList extends Component {
       }).then(() => this.setState({ newStock: '',  addStockClick: false}))
   }
 
+  selectStock = (stock) => {
+    this.props.selectStockAction(stock)
+  }
  
 
   render() {
-    const { handleClick, handleInput, addStock } = this
+    const { handleClick, handleInput, addStock, selectStock } = this
     return(
       <div>
         <div>
@@ -53,7 +56,7 @@ class StockList extends Component {
 
           </form>
         }
-        {this.props.userStocks.map((stock, index) => <StockListItem stock={stock} key={index} />)}
+        {this.props.userStocks.map((stock, index) => <StockListItem stock={stock} key={index} selectStock={selectStock} />)}
           
       </div>
     ) 
@@ -70,7 +73,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return { 
-    addNewStock: (newStock) => addNewStock(dispatch, newStock)
+    addNewStock: (newStock) => addNewStock(dispatch, newStock),
+    selectStockAction: (selectedStock) => selectStock(dispatch, selectedStock) 
   }
 }
 

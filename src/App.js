@@ -21,7 +21,6 @@ class App extends Component {
 
  
   componentDidMount() {
-  
     if (localStorage.getItem('token')) {
       API.validate()
         .then(user => this.login(user))

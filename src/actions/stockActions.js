@@ -14,3 +14,11 @@ export function addNewStock(dispatch, newStock) {
     payload: newStock
   })
 }
+
+export function selectStock(dispatch, selectedStock) {
+  console.log("selecting a stock")
+  dispatch({
+    type: 'SELECT_STOCK',
+    payload: selectedStock
+  })
+}

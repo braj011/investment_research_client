@@ -82,9 +82,17 @@
   /* width: 200px;     -  Didn't seem to work */
 }
 
-.specific-stock-news {
+.all-your-stock-news {
   flex: 1;
   flex-basis: 65%;
+  background: #aaa;
+  overflow-y: scroll;
+  margin-right: 1%;
+}
+
+.specific-single-stock-news {
+  flex: 1;
+  flex-basis: 50%;
   background: #aaa;
   overflow-y: scroll;
   margin-right: 1%;
@@ -94,7 +102,7 @@
   padding: 0;
   flex: 1;
   display: flex;
-  flex-basis: 25%;
+  flex-basis: 40%;
   overflow-y: scroll;
   height: 100vh;
   justify-content: center;

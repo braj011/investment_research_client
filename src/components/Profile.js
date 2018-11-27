@@ -3,8 +3,12 @@ import React, { Component } from 'react';
 import '../App.css';
 import StockList from './ProfileComponents/StockList';
 import ProfileStockNewsList from './ProfileComponents/ProfileStockNewsList';
+import Note from './ProfileComponents/Note';
+import { connect } from 'react-redux';
+import { Grid, GridColumn } from 'semantic-ui-react'
 
 class Profile extends Component {
+
 
   fakeArticles = () => {
     return  [...Array(100)].map((val, i) => `Article ${i}`);
@@ -25,28 +29,44 @@ class Profile extends Component {
             <StockList /> 
           </span>
 
-          <span className="specific-stock-news">
-            <ProfileStockNewsList /> 
-            {/* <div>Stock news</div>
-            <ul>
-              {this.fakeArticles().map((item, i) => (<li key={`item_${i}`}>{ item }</li>))}
-            </ul> */}
-          </span>
+          
 
-          <div className="stock-notes">
-          <div>NOTES</div>
-            <ul> 
-              {this.fakeNotes().map((item, i) => (<li key={`item_${i}`}>{ item }</li>))}
-            </ul>
+          {!this.props.selectedStock ? 
+            <span className="all-your-stock-news">
+              <ProfileStockNewsList /> 
+            </span>
+            :
+            <Grid columns="equal">
+              <Grid.Column width={10} color="olive"> 
+                <span className="specific-single-stock-news">
+                  <ProfileStockNewsList /> 
+                </span>
+              </Grid.Column>
+
+              <Grid.Column> 
+                <span className="stock-notes"> 
+                  <Note />
+                </span>
+              </Grid.Column>
+            </Grid> 
+          }
           </div>
 
-        </div> 
       </div>
     )
   } 
 } 
 
+const mapStateToProps =(state) => {
+  return {
+    selectedStock: state.stockStore.selectedStock
+  } 
+}
+
+
+
 
 // DOES NOT CURRENTLY HAVE A ROUTE TO DISPLAY PAGE!!! - CREATE A ROUTE FOR TESTING
 
-export default Profile
+export default connect(mapStateToProps)(Profile)
+
