@@ -69,6 +69,7 @@ export default class API  {
     return this.get(`${this.profileUrl}/${id}`)
   }
 
+
   //  STOCKS
 
   static addStock (newStock) {

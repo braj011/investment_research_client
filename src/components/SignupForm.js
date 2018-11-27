@@ -1,6 +1,8 @@
 import React from 'react'
 import API from '../API'
 
+import { Button } from 'react-bootstrap'
+
 class signupForm extends React.Component {
 
   state = {
@@ -18,7 +20,7 @@ class signupForm extends React.Component {
     event.preventDefault()
     API.signup(this.state.firstName, this.state.email, this.state.password)
       // .then(resp => console.log(resp))
-      .then(user => this.props.signup(user))
+      .then(user => this.props.login(user))
   }
   
   
@@ -36,7 +38,7 @@ class signupForm extends React.Component {
           <label className="grey-text" margin='normal'> Password</label>
           <input id='passwordInput' type='password' name='password' className="form-control" onChange={handleChange} value={password} />
         <br/>
-          <input type="submit" />  
+          <Button bsStyle="info" type="submit">Submit</Button>  
       </form>
     )
   }

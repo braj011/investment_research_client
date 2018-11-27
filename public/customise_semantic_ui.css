@@ -1,0 +1,8 @@
+
+/* customise semantic css elements - using the right bootstrap terms / element names */
+
+
+/*  SEMANTIC UI CARDS  */
+.ui.three.cards {
+  margin: 1%;
+}

@@ -2,7 +2,8 @@
 state = {
 
   newsStore: {
-    news: []
+    news: [],
+    profileNews: []
   },
 
   authStore: {

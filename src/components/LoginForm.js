@@ -1,5 +1,6 @@
 import React from 'react'
 import API from '../API'
+import { Button } from 'react-bootstrap'
 
 class LoginForm extends React.Component {
 
@@ -26,7 +27,7 @@ class LoginForm extends React.Component {
     event.preventDefault()
     API.login(this.state.email, this.state.password)
     .then(user => this.props.login(user))
-  }
+  } 
   
   render() {
     console.log('loginform rendered')
@@ -44,7 +45,7 @@ class LoginForm extends React.Component {
           value={password} 
           />
         <br/>
-          <input type="submit" />  
+          <Button bsStyle="info" type="submit">Submit</Button>  
       </form>
     )
   }

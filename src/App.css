@@ -22,12 +22,41 @@
   color: white;
 } */
 
-.main-content {
+
+/*  CUSTOM CSS FOR NEWS ARTICLES IN MAIN_CONTENT */
+/* .main-content {
   flex: 1;
   background: #aaa;
   margin: 2rem;
   overflow-y: scroll;
 }
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: block;
+  margin-left: 2%;
+  float:left;
+  padding: 1%;
+} 
+
+.card {
+  display: flex;
+  border: black solid 3px;
+  border-radius: 25px;
+  margin: 1%;
+}
+
+.image {
+  width: 60%;
+  border-radius: 20px;
+} */
+
+
+
 
 /* PROFILE CONTAINERS + sub components */
 .whole-profile-container {
@@ -39,24 +68,33 @@
 }
 
 .stock-list {
-  flex: 1;
-  display: flex;
+  /* flex: 1; */
+  display: inline-flex;
+  flex-direction: row;
+  align-self: flex-start;
+  flex-basis: 10%;
   justify-content: center;
-  align-items: center;
   background: #ddd;
+  margin-right: 1%;
+  padding: 1% 1%;
+
+
   /* width: 200px;     -  Didn't seem to work */
 }
 
 .specific-stock-news {
   flex: 1;
+  flex-basis: 65%;
   background: #aaa;
   overflow-y: scroll;
+  margin-right: 1%;
 }
 
 .stock-notes {
   padding: 0;
   flex: 1;
   display: flex;
+  flex-basis: 25%;
   overflow-y: scroll;
   height: 100vh;
   justify-content: center;

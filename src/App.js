@@ -8,6 +8,7 @@ import API from './API'
 import LoginForm from './components/LoginForm'
 import { loginAction } from './actions/authActions'
 import { loadUserStocks } from './actions/stockActions'
+import { updateProfileNews } from './actions/newsActions'
 
 import NavLogin from './components/NavLogin';
 import MainContent from './components/MainContent';
@@ -41,8 +42,8 @@ class App extends Component {
       API.getProfile(this.props.userID)
         .then(user =>  {
           this.props.loadUserStocks(user.data)
-          console.log("user object: ", user.data)
-        })
+          // console.log("user object: ", user.data)
+        }).then(this.getProfileNews)
 
       }
     } 
@@ -50,23 +51,38 @@ class App extends Component {
 
       // console.log("User:", user, "Logged in...")
       //  PLACEHOLDER until PROFILE PAGE COMPLETE
-      
+
+    getProfileNews = () => {
+      let stocks = this.props.userStocks.map(stockItem => stockItem.name)
+      return fetch('http://localhost:3000/api/v1/news_apis/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          'query': stocks.join(" OR "),
+          'sort': 'relevancy'
+        })
+      }).then(resp => resp.json())
+      .then(resp => this.props.updateProfileNews(resp.articles))
+    }    
+
+
+    // .then(newsData => {
+    //   let news = newsData.articles.map(article => {
+    //    if (!article.author) {
+    //      return {...article, author: "Unknown"}
+    //    } else {
+    //      return article
+    //    }
+    
   
-   
-
-
-  signup = (user) => {
-    this.login(user)
-  }
-
   render() {
-    const { login, signup } = this
+    const { login } = this
     return (
       <div className="App">
-        <NavLogin className="nav-bar" login={login} signup={signup} /> 
+        <NavLogin className="nav-bar" login={login} /> 
       {/* NOTE: routes potentially need to be from the App page + include withRouter if you're pushing history etc. / using props */}
         <Route exact path='/login' render={props => <LoginForm {...props} login={login} />} />
-        <Route exact path='/signup' render={props => <SignupForm {...props} signup={signup}/>} />
+        <Route exact path='/signup' render={props => <SignupForm {...props} login={login} />} />
         { !this.props.loggedIn ?
           <Route exact path ='/' render={() => <MainContent />} /> 
           :
@@ -83,7 +99,8 @@ const mapStateToProps = (state) => {
   return { 
     loggedIn: state.authStore.loggedIn,
     userID: state.authStore.userID,
-    userStocks: state.stockStore.userStocks
+    userStocks: state.stockStore.userStocks,
+    profileNews: state.newsStore.profileNews
   }
 }
 
@@ -92,7 +109,8 @@ const mapDispatchToProps = (dispatch) => {
     // getNewsHeadlines: (news) => getNewsHeadlines(dispatch, news),
     // could have also action written explicitly here, rather than separated into a separate actions file 
     loginAction: (user) => loginAction(dispatch, user),
-    loadUserStocks: (user) => loadUserStocks(dispatch, user)
+    loadUserStocks: (user) => loadUserStocks(dispatch, user),
+    updateProfileNews: (news) => updateProfileNews(dispatch, news)
   }
 }
 

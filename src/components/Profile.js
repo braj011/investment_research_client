@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import { Route, withRouter, Link } from 'react-router-dom'
 import '../App.css';
 import StockList from './ProfileComponents/StockList';
+import ProfileStockNewsList from './ProfileComponents/ProfileStockNewsList';
 
 class Profile extends Component {
 
@@ -19,15 +20,17 @@ class Profile extends Component {
         <header> PROFILE PAGE
         </header>
         <div className="whole-profile-container">
+
           <span className="stock-list">
             <StockList /> 
           </span>
 
           <span className="specific-stock-news">
-            <div>Stock news</div>
+            <ProfileStockNewsList /> 
+            {/* <div>Stock news</div>
             <ul>
               {this.fakeArticles().map((item, i) => (<li key={`item_${i}`}>{ item }</li>))}
-            </ul>
+            </ul> */}
           </span>
 
           <div className="stock-notes">
