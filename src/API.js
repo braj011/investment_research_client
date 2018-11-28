@@ -25,6 +25,9 @@ export default class API  {
 
     this.stockUrl = this.baseUrl + '/stocks'
     this.userStockUrl = this.baseUrl + '/user_stocks'
+
+    this.noteUrl = this.baseUrl + '/notes'
+    this.getUserNotesUrl = this.baseUrl + '/get_user_notes'
   }
 
   
@@ -88,13 +91,50 @@ export default class API  {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        'user': userID,
-        'stock': stockID
+        'user_id': userID,
+        'stock_id': stockID
       })
     }).then(resp => resp.json())   
   }   
 
-} 
+  //  NOTES
+
+  static addNote (newNote, newNoteContent, userStock) {
+    const token = localStorage.getItem('token')
+    return fetch(this.noteUrl, {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': token 
+            //  pass in user authorisation header - so that you don't have to do user id
+      },
+      body: JSON.stringify({
+        'title' : newNote,
+        'content': newNoteContent,
+        'stock_id': userStock.id
+      })
+    }).then(resp => resp.json())  
+
+  }
+
+  static getExistingNotes = (stock) => {
+    const token = localStorage.getItem('token')
+    // debugger
+    return fetch("http://localhost:3000/api/v1/get_user_notes", {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': token 
+      },
+      body: JSON.stringify({
+        'stock_id': stock.id
+      })
+    }).then(resp => resp.json())  
+  }
+
+}
+
+
 
 API.init()
 

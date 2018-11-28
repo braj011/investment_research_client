@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Button } from 'semantic-ui-react' 
 
 import { addNewStock, selectStock } from '../../actions/stockActions'
+import { loadUserStockNotes } from '../../actions/noteActions'
 
 import API from '../../API'
 
@@ -29,14 +30,24 @@ class StockList extends Component {
   addStock = (e) => {
     e.preventDefault()
     API.addStock(this.state.newStock) // works
-      .then(data => {
-        API.createUserStock(data.id, this.props.userID)
-        this.props.addNewStock(data)
-      }).then(() => this.setState({ newStock: '',  addStockClick: false}))
+      // .then(stock => console.log(stock))       e.g.  {id: 6, name: "Google", created_at: "2018-11-28T15:32:44.631Z", updated_at: "2018-11-28T15:32:44.631Z"}
+      .then(stock => API.createUserStock(stock.id, this.props.userID))
+            // // .then(data => API.createUserStock(data.id, this.props.userID))    // Weds 15:14 - perhaps I need to send over the whole data(i.e. the stock) to the creation, not just stock.id and this.props.userID
+        // .then(userStock => console.log(userStock))  // e.g. {id: 5, user_id: 1, stock_id: 10, created_at: "2018-11-28T15:52:33.161Z", updated_at: "2018-11-28T15:52:33.161Z"}
+        //  WRONG - .then(userStock => this.props.loadNewAndExistingStocks(userStock))
+        .then(userStock => { console.log(userStock) 
+          this.props.addNewStock(userStock)
+        })
+        // .then(existingStockList => this.props.loadUserStocks(existingStockList))
+    
+      // this.setState({ newStock: '',  addStockClick: false})
+          // .then(() => this.setState({ newStock: '',  addStockClick: false}))
   }
 
   selectStock = (stock) => {
     this.props.selectStockAction(stock)
+    API.getExistingNotes(stock)
+      .then((existingNotes) => this.props.loadUserStockNotes(existingNotes))
   }
  
 
@@ -74,7 +85,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return { 
     addNewStock: (newStock) => addNewStock(dispatch, newStock),
-    selectStockAction: (selectedStock) => selectStock(dispatch, selectedStock) 
+    // loadNewAndExistingStocks: (allStocks) => loadNewAndExistingStocks(dispatch, allStocks),
+    selectStockAction: (selectedStock) => selectStock(dispatch, selectedStock),
+    loadUserStockNotes: (existingNotes) => loadUserStockNotes(dispatch, existingNotes) 
   }
 }
 

@@ -8,6 +8,7 @@ import API from './API'
 import LoginForm from './components/LoginForm'
 import { loginAction } from './actions/authActions'
 import { loadUserStocks } from './actions/stockActions'
+import { loadUserStockNotes } from './actions/noteActions'
 import { updateProfileNews } from './actions/newsActions'
 
 import NavLogin from './components/NavLogin';
@@ -41,6 +42,7 @@ class App extends Component {
       API.getProfile(this.props.userID)
         .then(user =>  {
           this.props.loadUserStocks(user.data)
+          // LOAD USERSTOCK NOTES
           // console.log("user object: ", user.data)
         }).then(this.getProfileNews)
 

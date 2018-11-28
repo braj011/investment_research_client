@@ -10,13 +10,13 @@ import { Grid, GridColumn } from 'semantic-ui-react'
 class Profile extends Component {
 
 
-  fakeArticles = () => {
-    return  [...Array(100)].map((val, i) => `Article ${i}`);
-  }
+  // fakeArticles = () => {
+  //   return  [...Array(100)].map((val, i) => `Article ${i}`);
+  // }
 
-  fakeNotes = () => {
-    return  [...Array(50)].map((val, i) => `Note ${i}`);
-  }
+  // fakeNotes = () => {
+  //   return  [...Array(50)].map((val, i) => `Note ${i}`);
+  // }
 
   render() {
     return(
@@ -36,17 +36,14 @@ class Profile extends Component {
               <ProfileStockNewsList /> 
             </span>
             :
-            <Grid columns="equal">
-              <Grid.Column width={10} color="olive"> 
-                <span className="specific-single-stock-news">
-                  <ProfileStockNewsList /> 
-                </span>
+            <Grid>
+              <Grid.Column  color="olive" className="specific-single-stock-news"> 
+                <p>{this.props.selectedStock.name}</p>
+              
               </Grid.Column>
 
-              <Grid.Column> 
-                <span className="stock-notes"> 
+              <Grid.Column className="stock-notes" > 
                   <Note />
-                </span>
               </Grid.Column>
             </Grid> 
           }

@@ -7,6 +7,8 @@
   margin: 1%;
 }
 
-.ui.equal.width.grid {
-  padding: 1%
+.ui.grid {
+  padding: 1%;
+  width: 100%;
+
 }
