@@ -1,5 +1,5 @@
 const defaultState = {
-  userStocks: ["test"],
+  userStocks: [],
   selectedStock: undefined
 }
 
@@ -9,7 +9,6 @@ export default function(state = defaultState, action)
     case 'LOAD_EXISTING_USER_STOCKS':
       return { userStocks:  action.payload }
     case 'ADD_NEW_STOCK':
-    
       return { userStocks: [...state.userStocks, action.payload.data[0]]  }
     case 'SELECT_USER_STOCK':
       console.log("selectedStock:", action.payload) 

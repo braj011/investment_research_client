@@ -63,17 +63,10 @@ class App extends Component {
           'sort': 'relevancy'
         })
       }).then(resp => resp.json())
-      .then(resp => this.props.updateProfileNews(resp.articles))
-    }    
+        .then(newsData => newsData.articles.filter(article => !!article.source.name)) 
+        .then(news => this.props.updateProfileNews(news))
+    }
 
-
-    // .then(newsData => {
-    //   let news = newsData.articles.map(article => {
-    //    if (!article.author) {
-    //      return {...article, author: "Unknown"}
-    //    } else {
-    //      return article
-    //    }
     
   
   render() {
@@ -101,6 +94,7 @@ const mapStateToProps = (state) => {
     loggedIn: state.authStore.loggedIn,
     userID: state.authStore.userID,
     userStocks: state.stockStore.userStocks,
+    selectedStock: state.stockStore.selectedStock,
     profileNews: state.newsStore.profileNews
   }
 }

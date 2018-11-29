@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ProfileStockNewsItem from './ProfileStockNewsItem'
 // import '../App.css';
+import { Card } from 'semantic-ui-react'
 
 import { connect } from 'react-redux';
 
@@ -10,9 +11,9 @@ class ProfileStockNewsList extends Component {
     console.log("Profile news:", this.props.profileNews)
 
     return(
-      <div> 
+      <Card.Group itemsPerRow={3}> 
         {this.props.profileNews.map((article, index) => <ProfileStockNewsItem article={article} key={index} />)}
-      </div> 
+      </Card.Group> 
     ) 
   }
 
@@ -23,3 +24,13 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(ProfileStockNewsList)
+
+
+{/* <Card.Group itemsPerRow={3} divided>
+{this.props.news.map((article, index) => 
+    <HeadlineNews article={article} key={index} />)
+} 
+</Card.Group>  */}
+
+
+

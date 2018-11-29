@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 import '../App.css';
 import StockList from './ProfileComponents/StockList';
 import ProfileStockNewsList from './ProfileComponents/ProfileStockNewsList';
+import SelectedStockNews from './ProfileComponents/SelectedStockNews';
 import Note from './ProfileComponents/Note';
 import { connect } from 'react-redux';
-import { Grid, GridColumn } from 'semantic-ui-react'
+import { Grid, Card } from 'semantic-ui-react'
 
 class Profile extends Component {
 
@@ -33,14 +34,18 @@ class Profile extends Component {
 
           {!this.props.selectedStock ? 
             <span className="all-your-stock-news">
-              <ProfileStockNewsList /> 
+              <SelectedStockNews /> 
             </span>
             :
             <Grid>
               <Grid.Column  color="olive" className="specific-single-stock-news"> 
-                <p>{this.props.selectedStock.name}</p>
-              
+                <Card.Group itemsPerRow={2}> 
+                  <p> {this.props.selectedStock.name} </p> 
+                  {/* {this.props.singleStockNews.map((article, index) => <SelectedStockNews article={article} key={index} />)} */}
+                </Card.Group> 
               </Grid.Column>
+
+               
 
               <Grid.Column className="stock-notes" > 
                   <Note />
@@ -56,10 +61,11 @@ class Profile extends Component {
 
 const mapStateToProps =(state) => {
   return {
-    selectedStock: state.stockStore.selectedStock
+    selectedStock: state.stockStore.selectedStock,
+    profileNews: state.newsStore.profileNews,
+    singleStockNews: state.newsStore.singleStockNews
   } 
 }
-
 
 
 

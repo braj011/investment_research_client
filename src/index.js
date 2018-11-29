@@ -4,7 +4,9 @@ import { BrowserRouter} from 'react-router-dom'
 import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createLogger } from "redux-logger";
+import { composeWithDevTools } from "redux-devtools-extension";
 import newsReducer from './reducers/newsReducer'
 import authReducer from './reducers/authReducer'
 import stockReducer from './reducers/stockReducer'
@@ -15,10 +17,14 @@ const masterReducer = combineReducers({
   newsStore: newsReducer,
   authStore: authReducer,
   stockStore: stockReducer,
-  noteStore: noteReducer  
+  noteStore: noteReducer
 })
 
-const store = createStore(masterReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const loggerMiddleware = createLogger();
+
+const composeEnhancers = composeWithDevTools({});
+
+const store = createStore(masterReducer, composeEnhancers(applyMiddleware(loggerMiddleware)));
 
 ReactDOM.render(
   <Provider store={store}>

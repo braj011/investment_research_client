@@ -15,7 +15,8 @@ state = {
 
   stockStore: {
     userStocks: [],
-    selectedStock:  undefined
+    selectedStock:  undefined,
+    singleStockNewss: undefined
   }
   
 }

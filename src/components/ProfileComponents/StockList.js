@@ -5,8 +5,10 @@ import { Button } from 'semantic-ui-react'
 
 import { addNewStock, selectStock } from '../../actions/stockActions'
 import { loadUserStockNotes } from '../../actions/noteActions'
+import { updateProfileNews, updateSingleStockNews } from '../../actions/newsActions'
 
 import API from '../../API'
+
 
 class StockList extends Component {
 
@@ -16,8 +18,6 @@ class StockList extends Component {
     // selectedStock: ""
   }
   
-  // Process of adding a stock 
-
   handleClick = () => {
     this.setState({ addStockClick: !this.state.addStockClick })
 }
@@ -25,8 +25,7 @@ class StockList extends Component {
   handleInput = (e) => {
     this.setState({ newStock: e.target.value })
   }
-  // add a UserStock - i.e. the association - 2 different API methods here 
-
+  
   addUserStock = (e) => {
     e.preventDefault()
     API.createUserStock(this.state.newStock)
@@ -39,11 +38,25 @@ class StockList extends Component {
 
   selectStock = (stock) => {
     this.props.selectStockAction(stock)
+    this.getSingleStocknews(stock)
     API.getExistingNotes(stock)
-      .then((existingNotes) => this.props.loadUserStockNotes(existingNotes)
-        )
+      .then((existingNotes) => this.props.loadUserStockNotes(existingNotes))
     }
- 
+
+  
+  getSingleStocknews = (stock) => {
+    return fetch('http://localhost:3000/api/v1/news_apis/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        'query': stock.name,
+        'sort': 'relevancy'
+      })
+    }).then(resp => resp.json())
+    .then(news => this.props.updateProfileNews(news))
+   
+  }
+
 
   render() {
     const { handleClick, handleInput, addUserStock, selectStock } = this
@@ -73,6 +86,7 @@ class StockList extends Component {
 const mapStateToProps = (state) => {
   return { 
     userStocks: state.stockStore.userStocks,
+    selectedStock: state.stockStore.selectedStock,
     userID: state.authStore.userID
   }
 }
@@ -80,9 +94,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return { 
     addNewStock: (newStock) => addNewStock(dispatch, newStock),
-    // loadNewAndExistingStocks: (allStocks) => loadNewAndExistingStocks(dispatch, allStocks),
     selectStockAction: (selectedStock) => selectStock(dispatch, selectedStock),
-    loadUserStockNotes: (existingNotes) => loadUserStockNotes(dispatch, existingNotes) 
+    loadUserStockNotes: (existingNotes) => loadUserStockNotes(dispatch, existingNotes), 
+    updateProfileNews: (news) => updateProfileNews(dispatch, news),
+    updateSingleStockNews: (news) => updateSingleStockNews(dispatch, news)
   }
 }
 

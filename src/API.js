@@ -74,6 +74,7 @@ export default class API  {
 
 
   //  STOCKS
+  //  Stock and User Stock both get created in UserStockController - serverside
 
   static createUserStock (newStock) {
     const token = localStorage.getItem('token')
@@ -90,16 +91,7 @@ export default class API  {
     .then(resp =>  resp.json())
   } 
 
-  // static createUserStock (stockID, userID){
-  //   return fetch(this.userStockUrl,  {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({
-  //       'user_id': userID,
-  //       'stock_id': stockID
-  //     })
-  //   }).then(resp => resp.json())   
-  // }   
+
 
   //  NOTES
 
