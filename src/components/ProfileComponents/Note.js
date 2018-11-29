@@ -37,10 +37,17 @@ class Note extends Component {
       .then(() => this.setState({ newNote: '', newNoteContent: '',  addNoteClick: false}))
   }
 
+  // reverseNotes = () => {
+  //   const notesReverseOrder = this.props.notes.slice(0).reverse
+  //   console.log(notesReverseOrder)
+  //   return notesReverseOrder
+  // }
+
   
 
   render() {
     const { handleClick, handleInput, addNote } = this
+    
     return(
       <div>NOTES
         <div>
@@ -57,7 +64,7 @@ class Note extends Component {
                 </form>
             }   
             <div> 
-              {this.props.notes.map((note, index) => <NoteItem note={note} key={index} />)}
+              {this.props.notes.slice(0).reverse().map((note, index) => <NoteItem note={note} key={index} />)}
             </div>
         </div> 
       </div>

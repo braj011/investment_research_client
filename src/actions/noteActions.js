@@ -10,7 +10,7 @@ export function loadUserStockNotes(dispatch, notes) {
 }
 
 export function addNewNote(dispatch, newNote) {
-  console.log("adding new note to the user_stock")
+  console.log("adding new note to the user_stock:", newNote)
   dispatch({
     type: 'ADD_NEW_NOTE',
     payload: newNote

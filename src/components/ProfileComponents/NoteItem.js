@@ -1,15 +1,14 @@
 import React from 'react'
-import { List } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 
 const NoteItem = (props) => {
 
   return (
-    <List divided>
-      <List.Content> 
-       <List.Header size="large">{props.note.title}</List.Header>
-       <List.Description>{props.note.content}</List.Description>
-      </List.Content>
-    </List>
+    <Card  className="note-card" fluid divided>
+        <Card.Content header={props.note.updated_at.replace(/-/g,'/').substr(0,10)} /> 
+        <Card.Content size="small" description={props.note.title} />
+        <Card.Content description={props.note.content} />
+    </Card>
   ) 
 }
 

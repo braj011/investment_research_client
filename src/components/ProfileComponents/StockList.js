@@ -35,21 +35,11 @@ class StockList extends Component {
         this.props.addNewStock(userStock)
       })
         .then(data => console.log(data))
-  
-
-      //     this.props.addNewStock(userStock)
-      //   })
-        // .then(existingStockList => this.props.loadUserStocks(existingStockList))
-    
-      // this.setState({ newStock: '',  addStockClick: false})
-          // .then(() => this.setState({ newStock: '',  addStockClick: false}))
   }
 
   selectStock = (stock) => {
     this.props.selectStockAction(stock)
-    // debugger
     API.getExistingNotes(stock)
-      // .then(notes array  => console.log(notes array))
       .then((existingNotes) => this.props.loadUserStockNotes(existingNotes)
         )
     }
