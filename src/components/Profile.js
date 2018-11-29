@@ -34,18 +34,17 @@ class Profile extends Component {
 
           {!this.props.selectedStock ? 
             <span className="all-your-stock-news">
-              <SelectedStockNews /> 
+              <ProfileStockNewsList /> 
             </span>
             :
             <Grid>
               <Grid.Column  color="olive" className="specific-single-stock-news"> 
                 <Card.Group itemsPerRow={2}> 
                   <p> {this.props.selectedStock.name} </p> 
-                  {/* {this.props.singleStockNews.map((article, index) => <SelectedStockNews article={article} key={index} />)} */}
+                  {/* {this.props.profileNews.map((article, index) => <SelectedStockNews article={article} key={index} />)} */}
                 </Card.Group> 
               </Grid.Column>
 
-               
 
               <Grid.Column className="stock-notes" > 
                   <Note />
@@ -63,7 +62,6 @@ const mapStateToProps =(state) => {
   return {
     selectedStock: state.stockStore.selectedStock,
     profileNews: state.newsStore.profileNews,
-    singleStockNews: state.newsStore.singleStockNews
   } 
 }
 

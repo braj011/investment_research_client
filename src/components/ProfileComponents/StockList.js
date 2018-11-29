@@ -5,7 +5,7 @@ import { Button } from 'semantic-ui-react'
 
 import { addNewStock, selectStock } from '../../actions/stockActions'
 import { loadUserStockNotes } from '../../actions/noteActions'
-import { updateProfileNews, updateSingleStockNews } from '../../actions/newsActions'
+import { updateProfileNews } from '../../actions/newsActions'
 
 import API from '../../API'
 
@@ -96,8 +96,7 @@ const mapDispatchToProps = (dispatch) => {
     addNewStock: (newStock) => addNewStock(dispatch, newStock),
     selectStockAction: (selectedStock) => selectStock(dispatch, selectedStock),
     loadUserStockNotes: (existingNotes) => loadUserStockNotes(dispatch, existingNotes), 
-    updateProfileNews: (news) => updateProfileNews(dispatch, news),
-    updateSingleStockNews: (news) => updateSingleStockNews(dispatch, news)
+    updateProfileNews: (news) => updateProfileNews(dispatch, news)
   }
 }
 

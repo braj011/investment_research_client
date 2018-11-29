@@ -1,7 +1,7 @@
 const defaultState = {
   news: [],
   profileNews: [],
-  singleStockNewss: []
+  // singleStockNews: []
 }
 
 
@@ -14,10 +14,10 @@ export default function(state = defaultState, action)
       return { news:  action.payload, profileNews: [] } // need to set the non-used store to empty
     case "UPDATE_PROFILE_NEWS":
       // debugger
-      return { profileNews: action.payload.articles, news: [] }  // need to set the non-used store to empty
-    case "UPDATE_SINGLE_STOCK_NEWS":
-    //   debugger
-      return { singleStockNews: action.payload, profileNews: [], news: [] }  
+      return { profileNews: action.payload, news: [] }  // need to set the non-used store to empty
+    // case "UPDATE_SINGLE_STOCK_NEWS":
+    // //   debugger
+    //   return { singleStockNews: action.payload, profileNews: [], news: [] }  
     default:
       return state  
   }
