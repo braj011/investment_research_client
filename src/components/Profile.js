@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import StockList from './ProfileComponents/StockList';
 import ProfileStockNewsList from './ProfileComponents/ProfileStockNewsList';
+import ProfileStockNewsItem from './ProfileComponents/ProfileStockNewsItem'
 import SelectedStockNews from './ProfileComponents/SelectedStockNews';
 import Note from './ProfileComponents/Note';
 import { connect } from 'react-redux';
@@ -18,6 +19,10 @@ class Profile extends Component {
   // fakeNotes = () => {
   //   return  [...Array(50)].map((val, i) => `Note ${i}`);
   // }
+
+  getSingleStockArticles = () => {
+    this.props.profileNews.map((article, index) => <ProfileStockNewsItem article={article} key={index} />)
+  }
 
   render() {
     return(
@@ -40,8 +45,9 @@ class Profile extends Component {
             <Grid>
               <Grid.Column  color="olive" className="specific-single-stock-news"> 
                 <Card.Group itemsPerRow={2}> 
-                  <p> {this.props.selectedStock.name} </p> 
-                  {/* {this.props.profileNews.map((article, index) => <SelectedStockNews article={article} key={index} />)} */}
+                  {/* <p> {this.props.selectedStock.name} </p>  */}
+                  {this.getSingleStockArticles} 
+                  {/* 20:22 note - this does not error out but nothing renders */}
                 </Card.Group> 
               </Grid.Column>
 
@@ -64,10 +70,6 @@ const mapStateToProps =(state) => {
     profileNews: state.newsStore.profileNews,
   } 
 }
-
-
-
-// DOES NOT CURRENTLY HAVE A ROUTE TO DISPLAY PAGE!!! - CREATE A ROUTE FOR TESTING
 
 export default connect(mapStateToProps)(Profile)
 

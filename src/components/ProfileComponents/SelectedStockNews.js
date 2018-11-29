@@ -5,7 +5,7 @@ const SelectedStockNews = (props) => {
  
   return (
     <Card fluid> DISPLAY SINGLE STOCK NEWS
-      {/* <h1 className="display-2 text-centre">
+      <h1 className="display-2 text-centre">
         <a href={props.article.url}>{props.article.title}</a>
       </h1>  
        <div>
@@ -20,7 +20,7 @@ const SelectedStockNews = (props) => {
           <a href={props.article.url}>
             <Button className="btn btn-outline-secondary">More</Button>
           </a>
-        </div> */}
+        </div>
     </Card> 
   ) 
 }
