@@ -75,10 +75,14 @@ export default class API  {
 
   //  STOCKS
 
-  static addStock (newStock) {
-    return fetch(this.stockUrl, {
+  static createUserStock (newStock) {
+    const token = localStorage.getItem('token')
+    return fetch(this.userStockUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token  
+      },
       body: JSON.stringify({
         'name': newStock
       })
@@ -86,16 +90,16 @@ export default class API  {
     .then(resp =>  resp.json())
   } 
 
-  static createUserStock (stockID, userID){
-    return fetch(this.userStockUrl,  {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        'user_id': userID,
-        'stock_id': stockID
-      })
-    }).then(resp => resp.json())   
-  }   
+  // static createUserStock (stockID, userID){
+  //   return fetch(this.userStockUrl,  {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({
+  //       'user_id': userID,
+  //       'stock_id': stockID
+  //     })
+  //   }).then(resp => resp.json())   
+  // }   
 
   //  NOTES
 

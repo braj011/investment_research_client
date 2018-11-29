@@ -7,14 +7,10 @@ export default function(state = defaultState, action)
 {
   switch (action.type) {
     case 'LOAD_EXISTING_USER_STOCKS':
-      return { userStocks:  action.payload.userStocks }
+      return { userStocks:  action.payload }
     case 'ADD_NEW_STOCK':
-      console.log("Adding a new userStock:", {
-        id: action.payload.id,
-        name: action.payload.name,
-        stockNotes: action.payload.notes
-      })
-      return { userStocks: [...state.userStocks, action.payload]  }
+    
+      return { userStocks: [...state.userStocks, action.payload.data[0]]  }
     case 'SELECT_USER_STOCK':
       console.log("selectedStock:", action.payload) 
       return { userStocks: [...state.userStocks], selectedStock: action.payload  }

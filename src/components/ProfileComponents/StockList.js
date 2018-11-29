@@ -27,17 +27,18 @@ class StockList extends Component {
   }
   // add a UserStock - i.e. the association - 2 different API methods here 
 
-  addStock = (e) => {
+  addUserStock = (e) => {
     e.preventDefault()
-    API.addStock(this.state.newStock) // works
-      // .then(stock => console.log(stock))       e.g.  {id: 6, name: "Google", created_at: "2018-11-28T15:32:44.631Z", updated_at: "2018-11-28T15:32:44.631Z"}
-      .then(stock => API.createUserStock(stock.id, this.props.userID))
-            // // .then(data => API.createUserStock(data.id, this.props.userID))    // Weds 15:14 - perhaps I need to send over the whole data(i.e. the stock) to the creation, not just stock.id and this.props.userID
-        // .then(userStock => console.log(userStock))  // e.g. {id: 5, user_id: 1, stock_id: 10, created_at: "2018-11-28T15:52:33.161Z", updated_at: "2018-11-28T15:52:33.161Z"}
-        //  WRONG - .then(userStock => this.props.loadNewAndExistingStocks(userStock))
-        .then(userStock => { console.log(userStock) 
-          this.props.addNewStock(userStock)
-        })
+    API.createUserStock(this.state.newStock)
+      .then(userStock => {
+        console.log("userStock returned:", userStock) // data Object containing an array on a userStock object
+        this.props.addNewStock(userStock)
+      })
+        .then(data => console.log(data))
+  
+
+      //     this.props.addNewStock(userStock)
+      //   })
         // .then(existingStockList => this.props.loadUserStocks(existingStockList))
     
       // this.setState({ newStock: '',  addStockClick: false})
@@ -46,13 +47,17 @@ class StockList extends Component {
 
   selectStock = (stock) => {
     this.props.selectStockAction(stock)
+    // debugger
     API.getExistingNotes(stock)
-      .then((existingNotes) => this.props.loadUserStockNotes(existingNotes))
-  }
+      // .then(notes array  => console.log(notes array))
+      .then((existingNotes) => this.props.loadUserStockNotes(existingNotes)
+        )
+    }
  
 
   render() {
-    const { handleClick, handleInput, addStock, selectStock } = this
+    const { handleClick, handleInput, addUserStock, selectStock } = this
+    
     return(
       <div>
         <div>
@@ -61,7 +66,7 @@ class StockList extends Component {
         { !this.state.addStockClick ? 
           null 
           :
-          <form onSubmit={addStock}>
+          <form onSubmit={addUserStock}>
             <input type="text" className="form-control" name="newStock" placeholder="Add Stock" value={this.state.newStock} 
               onChange={handleInput}/> 
 

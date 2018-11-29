@@ -1,10 +1,10 @@
 
-export function loadUserStocks(dispatch, user) {
-  console.log("once logging in, displaying User's existing stocks and data:", user)
+export function loadUserStocks(dispatch, userStockInfo) {
+  console.log("once logging in, displaying User's existing stocks and data:", userStockInfo)
   // this displays userInfo and userStocks, each item in userStocks is an object that has an array called stockNotes
   dispatch({
     type: 'LOAD_EXISTING_USER_STOCKS',
-    payload: user
+    payload: userStockInfo
   })
 }
 

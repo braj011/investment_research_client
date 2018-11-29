@@ -40,8 +40,8 @@ class App extends Component {
       this.props.loginAction(user)
       this.props.history.push('/profile')
       API.getProfile(this.props.userID)
-        .then(user =>  {
-          this.props.loadUserStocks(user.data)
+        .then(userStockInfo =>  {
+          this.props.loadUserStocks(userStockInfo.data)
           // LOAD USERSTOCK NOTES
           // console.log("user object: ", user.data)
         }).then(this.getProfileNews)
