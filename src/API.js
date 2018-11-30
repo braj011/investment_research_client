@@ -28,6 +28,8 @@ export default class API  {
 
     this.noteUrl = this.baseUrl + '/notes'
     this.getUserNotesUrl = this.baseUrl + '/get_user_notes'
+
+    this.stockDataUrl = "https://api.iextrading.com/1.0/stock/"
   }
 
   
@@ -76,7 +78,8 @@ export default class API  {
   //  STOCKS
   //  Stock and User Stock both get created in UserStockController - serverside
 
-  static createUserStock (newStock) {
+  static createUserStock (newStock, newStockTicker) {
+    console.log(newStock, newStockTicker)
     const token = localStorage.getItem('token')
     return fetch(this.userStockUrl, {
       method: 'POST',
@@ -85,7 +88,8 @@ export default class API  {
         'Authorization': token  
       },
       body: JSON.stringify({
-        'name': newStock
+        'name': newStock,
+        'ticker': newStockTicker
       })
     })
     .then(resp =>  resp.json())
@@ -127,6 +131,9 @@ export default class API  {
       })
     }).then(resp => resp.json())  
   }
+
+  // FINANCIAL DATA
+  // uses selectedStock frm the store to form the url for GET request so moved to StockList
 
 }
 

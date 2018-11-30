@@ -11,13 +11,15 @@ import newsReducer from './reducers/newsReducer'
 import authReducer from './reducers/authReducer'
 import stockReducer from './reducers/stockReducer'
 import noteReducer from './reducers/noteReducer'
+import dataReducer from './reducers/dataReducer'
 
 
 const masterReducer = combineReducers({
   newsStore: newsReducer,
   authStore: authReducer,
   stockStore: stockReducer,
-  noteStore: noteReducer
+  noteStore: noteReducer,
+  dataStore: dataReducer
 })
 
 const loggerMiddleware = createLogger();

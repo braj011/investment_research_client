@@ -33,9 +33,14 @@ class Note extends Component {
     e.preventDefault()
     // console.log("this.props.selectedStock:", this.props.selectedStock)
     API.addNote(this.state.newNote, this.state.newNoteContent, this.props.selectedStock) 
-      .then(data => this.props.addNewNoteAction(data))
-      .then(() => this.setState({ newNote: '', newNoteContent: '',  addNoteClick: false}))
-  }
+      .then(data => {
+        !data ? 
+        alert("You need to include a Title and Content to this note")
+        :  
+        this.props.addNewNoteAction(data)
+      }).then(() => this.setState({ newNote: '', newNoteContent: '',  addNoteClick: false}))
+  } 
+  
 
   // reverseNotes = () => {
   //   const notesReverseOrder = this.props.notes.slice(0).reverse

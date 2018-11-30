@@ -17,6 +17,10 @@ state = {
     userStocks: [],
     selectedStock:  undefined,
     singleStockNewss: undefined
+  },
+
+  dataStore: {
+    stockData: []
   }
   
 }

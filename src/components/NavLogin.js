@@ -4,7 +4,7 @@ import { withRouter, Link } from 'react-router-dom'
 // import SignupForm from './SignupForm'
 
 import API from '../API'
-import FilterArticles from './FilterArticles' 
+
 import { connect } from 'react-redux';
 import { signoutAction } from '../actions/authActions'
 import { getNewsHeadlines } from '../actions/newsActions'

@@ -6,6 +6,9 @@ import { Button } from 'semantic-ui-react'
 import { addNewStock, selectStock, deselectStockAction } from '../../actions/stockActions'
 import { loadUserStockNotes } from '../../actions/noteActions'
 import { updateProfileNews } from '../../actions/newsActions'
+import { updateStockData } from '../../actions/dataActions'
+
+
 
 import API from '../../API'
 
@@ -14,8 +17,8 @@ class StockList extends Component {
 
   state = {
     addStockClick: false,
-    newStock: ""
-    // selectedStock: ""
+    newStock: "",
+    newStockTicker: ""
   }
   
   handleClick = () => {
@@ -23,15 +26,19 @@ class StockList extends Component {
   }
 
   handleInput = (e) => {
-    this.setState({ newStock: e.target.value })
+    this.setState({ [e.target.name]: e.target.value })
   }
   
   addUserStock = (e) => {
     e.preventDefault()
-    API.createUserStock(this.state.newStock)
-      .then(userStock => {
+    API.createUserStock(this.state.newStock, this.state.newStockTicker )
+      .then(userStock => { 
+        if (userStock.error) {
+          alert("You have already added this stock")
+        } else {
         console.log("userStock returned:", userStock) // data Object containing an array on a userStock object
         this.props.addNewStock(userStock)
+        } 
       })
         .then(data => console.log(data))
   }
@@ -39,6 +46,7 @@ class StockList extends Component {
   selectStock = (stock) => {
     this.props.selectStockAction(stock)
     this.getSingleStocknews(stock)
+    this.getStockData(stock)
     API.getExistingNotes(stock)
       .then((existingNotes) => this.props.loadUserStockNotes(existingNotes))
     }
@@ -56,6 +64,13 @@ class StockList extends Component {
     .then(news => this.props.updateProfileNews(news.articles))
   }
 
+ getStockData = (stock) => {
+    return fetch(`https://api.iextrading.com/1.0/stock/ + ${stock.ticker} + /chart/1y`)
+    .then(resp => resp.json())
+     .then(stockData => this.props.updateStockData(stockData)) // add this action / dispatch from the newly created dataReducer
+  }  
+  
+
   goBack = () => {
     this.props.getProfileNews()
     this.props.deselectStockAction()
@@ -72,10 +87,12 @@ class StockList extends Component {
         { !this.state.addStockClick ? 
           null 
           :
-          <form onSubmit={addUserStock}>
+          <form>
             <input type="text" className="form-control" name="newStock" placeholder="Add Stock" value={this.state.newStock} 
               onChange={handleInput}/> 
-
+            <input type="text" className="form-control" name="newStockTicker" placeholder="Add a Ticker" value={this.state.newStockTicker} 
+            onChange={handleInput}/> 
+            <input type="submit" onClick={addUserStock}/> 
           </form>
         }
         {this.props.userStocks.map((stock, index) => <StockListItem stock={stock} key={index} selectStock={selectStock} />)}
@@ -103,7 +120,8 @@ const mapDispatchToProps = (dispatch) => {
     selectStockAction: (selectedStock) => selectStock(dispatch, selectedStock),
     deselectStockAction: (deselect) => selectStock(dispatch, deselect),
     loadUserStockNotes: (existingNotes) => loadUserStockNotes(dispatch, existingNotes), 
-    updateProfileNews: (news) => updateProfileNews(dispatch, news)
+    updateProfileNews: (news) => updateProfileNews(dispatch, news),
+    updateStockData: (stockData) => updateStockData(dispatch, stockData)
   }
 }
 
