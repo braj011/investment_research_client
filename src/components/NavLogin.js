@@ -57,7 +57,7 @@ class NavLogin extends React.Component {
     
             }
           </Nav>
-          <FilterArticles /> 
+          {/* <FilterArticles />  */}
         </Navbar>
     )
   }

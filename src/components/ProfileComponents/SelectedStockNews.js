@@ -9,11 +9,12 @@ const SelectedStockNews = (props) => {
         <a href={props.article.url}>{props.article.title}</a>
       </h1>  
        <div>
+        CONTENT: {props.article.content} 
         {props.article.source.name}
       </div>
-      <Image size="large" src={props.article.urlToImage} alt={props.article.content} />
+      <Image size="large" src={props.article.urlToImage} alt={props.article.description} />
       <div className="row pt-4 text-left">
-        {props.article.description} 
+        DESCRIPTION: {props.article.description} 
       </div>
      
         <div className="More-button">

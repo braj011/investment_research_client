@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { Search } from 'semantic-ui-react'
+import { Input } from 'semantic-ui-react'
+import { connect } from 'react-redux';
 
 
 class FilterArticle extends React.Component {
@@ -15,16 +16,21 @@ class FilterArticle extends React.Component {
     })
   }
 
-  // submitSearch = 
+  //  if logged in - filter alters the Profile news store state 
+
+
+
 
   render() {
     return(
       <div> 
-        <Search showNoResults
+        <Input
+          icon="search"
           name="filterInput"
+          onChange={this.handleFilter}
           value={this.state.filterInput}
           placeholder="Filter articles by key words">
-        </Search>
+        </Input>
       </div> 
     ) 
   } 

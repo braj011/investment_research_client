@@ -11,7 +11,7 @@ const ProfileNewsStockItem = (props) => {
       <div>
         {props.article.source.name}
       </div>
-      <Image className="card-image" size="medium" floated="centre" src={props.article.urlToImage} alt={props.article.content} />
+      <Image className="card-image" size="medium" floated="centre" src={props.article.urlToImage} alt={props.article.title} />
       <div className="row pt-4 text-left">
         {props.article.description} 
       </div>
