@@ -13,6 +13,8 @@ export default function(state = defaultState, action)
     case 'SELECT_USER_STOCK':
       console.log("selectedStock:", action.payload) 
       return { userStocks: [...state.userStocks], selectedStock: action.payload  }
+    case 'DESELECT_USER_STOCK':
+      return { userStocks: [...state.userStocks], selectedStock: defaultState.selectedStock  }
     default:
       return state
   }

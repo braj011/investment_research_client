@@ -24,3 +24,11 @@ export function selectStock(dispatch, selectedStock) {
     payload: selectedStock
   })
 }
+
+export function deselectStock(dispatch) {
+  console.log("going back to main profile page")
+  dispatch({
+    type: 'DESELECT_USER_STOCK',
+    payload: null
+  })
+}

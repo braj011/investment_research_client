@@ -3,7 +3,7 @@ import StockListItem from './StockListItem'
 import { connect } from 'react-redux';
 import { Button } from 'semantic-ui-react' 
 
-import { addNewStock, selectStock } from '../../actions/stockActions'
+import { addNewStock, selectStock, deselectStockAction } from '../../actions/stockActions'
 import { loadUserStockNotes } from '../../actions/noteActions'
 import { updateProfileNews } from '../../actions/newsActions'
 
@@ -20,7 +20,7 @@ class StockList extends Component {
   
   handleClick = () => {
     this.setState({ addStockClick: !this.state.addStockClick })
-}
+  }
 
   handleInput = (e) => {
     this.setState({ newStock: e.target.value })
@@ -53,18 +53,21 @@ class StockList extends Component {
         'sort': 'relevancy'
       })
     }).then(resp => resp.json())
-    .then(news => this.props.updateProfileNews(news))
-   
+    .then(news => this.props.updateProfileNews(news.articles))
   }
 
+  goBack = () => {
+    this.props.getProfileNews()
+    this.props.deselectStockAction()
+  } 
 
   render() {
-    const { handleClick, handleInput, addUserStock, selectStock } = this
+    const { handleClick, handleInput, addUserStock, selectStock, goBack } = this
     
     return(
       <div>
         <div>
-            <Button className="plus-btn" type="button" onClick={handleClick}> + </Button>
+            <Button className="plus-btn" type="button" onClick={handleClick}> ➕ </Button>
         </div>
         { !this.state.addStockClick ? 
           null 
@@ -76,6 +79,9 @@ class StockList extends Component {
           </form>
         }
         {this.props.userStocks.map((stock, index) => <StockListItem stock={stock} key={index} selectStock={selectStock} />)}
+        <div>
+            <Button className="go-back-btn" type="button" onClick={goBack}> 🔙 </Button>
+        </div>
           
       </div>
     ) 
@@ -95,6 +101,7 @@ const mapDispatchToProps = (dispatch) => {
   return { 
     addNewStock: (newStock) => addNewStock(dispatch, newStock),
     selectStockAction: (selectedStock) => selectStock(dispatch, selectedStock),
+    deselectStockAction: (deselect) => selectStock(dispatch, deselect),
     loadUserStockNotes: (existingNotes) => loadUserStockNotes(dispatch, existingNotes), 
     updateProfileNews: (news) => updateProfileNews(dispatch, news)
   }

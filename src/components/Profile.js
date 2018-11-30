@@ -4,7 +4,7 @@ import '../App.css';
 import StockList from './ProfileComponents/StockList';
 import ProfileStockNewsList from './ProfileComponents/ProfileStockNewsList';
 import ProfileStockNewsItem from './ProfileComponents/ProfileStockNewsItem'
-import SelectedStockNews from './ProfileComponents/SelectedStockNews';
+// import SelectedStockNews from './ProfileComponents/SelectedStockNews';
 import Note from './ProfileComponents/Note';
 import { connect } from 'react-redux';
 import { Grid, Card } from 'semantic-ui-react'
@@ -32,7 +32,7 @@ class Profile extends Component {
         <div className="whole-profile-container">
 
           <span className="stock-list">
-            <StockList /> 
+            <StockList getProfileNews={this.props.getProfileNews} /> 
           </span>
 
           
@@ -44,12 +44,13 @@ class Profile extends Component {
             :
             <Grid>
               <Grid.Column  color="olive" className="specific-single-stock-news"> 
-                <Card.Group itemsPerRow={2}> 
+                <ProfileStockNewsList /> 
+                    {/* {this.props.profileNews.map((article, index) => <ProfileStockNewsItem article={article} key={index} />)} */}
+                  
                   {/* <p> {this.props.selectedStock.name} </p>  */}
-                  {this.getSingleStockArticles} 
+           
                   {/* 20:22 note - this does not error out but nothing renders */}
-                </Card.Group> 
-              </Grid.Column>
+            </Grid.Column>
 
 
               <Grid.Column className="stock-notes" > 

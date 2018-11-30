@@ -70,7 +70,7 @@ class App extends Component {
     
   
   render() {
-    const { login } = this
+    const { login, getProfileNews } = this
     return (
       <div className="App">
         <NavLogin className="nav-bar" login={login} /> 
@@ -80,7 +80,7 @@ class App extends Component {
         { !this.props.loggedIn ?
           <Route exact path ='/' render={() => <MainContent />} /> 
           :
-          <Route exact path ='/profile' render={() => <Profile />} /> 
+          <Route exact path ='/profile' render={() => <Profile  getProfileNews={getProfileNews} />} /> 
         } 
 
       </div>
