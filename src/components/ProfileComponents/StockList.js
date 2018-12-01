@@ -36,16 +36,16 @@ class StockList extends Component {
         if (userStock.error) {
           alert("You have already added this stock")
         } else {
-        console.log("userStock returned:", userStock) // data Object containing an array on a userStock object
-        this.props.addNewStock(userStock)
+        // console.log("userStock returned:", userStock) // data Object containing an array on a userStock object
+        this.props.addNewStock(userStock) // works with ticker
         } 
       })
-        .then(data => console.log(data))
   }
 
   selectStock = (stock) => {
     this.props.selectStockAction(stock)
     this.getSingleStocknews(stock)
+    console.log("stock:", stock, "stock.ticker:", stock.ticker)
     this.getStockData(stock)
     API.getExistingNotes(stock)
       .then((existingNotes) => this.props.loadUserStockNotes(existingNotes))
@@ -65,10 +65,21 @@ class StockList extends Component {
   }
 
  getStockData = (stock) => {
-    return fetch(`https://api.iextrading.com/1.0/stock/ + ${stock.ticker} + /chart/1y`)
-    .then(resp => resp.json())
-     .then(stockData => this.props.updateStockData(stockData)) // add this action / dispatch from the newly created dataReducer
+   let stockDataUrl = `https://api.iextrading.com/1.0/stock/` + stock.ticker + `/chart/1y`
+   console.log("stockData Url:", stockDataUrl)
+   return fetch(stockDataUrl)
+    // .then(data => console.log(typeof data)) // type of response is an object 
+    // .then(resp => resp.json())
+      .then(data => data.json())
+    // .then(resp => resp.json())
+      .then(stockData => this.props.updateStockData(stockData)) // add this action / dispatch from the newly created dataReducer
   }  
+
+  // result of the API call to a stock
+// [{date: "2017-11-29", open: 1194.8, high: 1194.8, low: 1145.19, close: 1161.27, volume: 9257512,…},…]
+// [0 … 99]
+// [100 … 199]
+// [200 … 252]
   
 
   goBack = () => {

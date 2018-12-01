@@ -79,7 +79,7 @@ export default class API  {
   //  Stock and User Stock both get created in UserStockController - serverside
 
   static createUserStock (newStock, newStockTicker) {
-    console.log(newStock, newStockTicker)
+    console.log("newStockItem:", newStock, newStockTicker) // works
     const token = localStorage.getItem('token')
     return fetch(this.userStockUrl, {
       method: 'POST',
