@@ -6,7 +6,7 @@ const ProfileNewsStockItem = (props) => {
   return (
     <Card>
       <h1 className="display-2 text-centre">
-        <a href={props.article.url}>{props.article.title}</a>
+        <a href={props.article.url } target="_blank">{props.article.title}</a>
       </h1> 
       <div>
         {props.article.source.name}

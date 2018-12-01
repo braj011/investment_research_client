@@ -4,7 +4,8 @@ import '../App.css';
 import StockList from './ProfileComponents/StockList';
 import ProfileStockNewsList from './ProfileComponents/ProfileStockNewsList';
 import ProfileStockNewsItem from './ProfileComponents/ProfileStockNewsItem'
-// import SelectedStockNews from './ProfileComponents/SelectedStockNews';
+import HighCharts from './ProfileComponents/HighCharts';
+
 import Note from './ProfileComponents/Note';
 import { connect } from 'react-redux';
 import { Grid, Card } from 'semantic-ui-react'
@@ -42,21 +43,24 @@ class Profile extends Component {
               <ProfileStockNewsList /> 
             </span>
             :
-            <Grid>
-              <Grid.Column  color="olive" className="specific-single-stock-news"> 
-                <ProfileStockNewsList /> 
-                    {/* {this.props.profileNews.map((article, index) => <ProfileStockNewsItem article={article} key={index} />)} */}
-                  
-                  {/* <p> {this.props.selectedStock.name} </p>  */}
-           
-                  {/* 20:22 note - this does not error out but nothing renders */}
-            </Grid.Column>
-
-
-              <Grid.Column className="stock-notes" > 
-                  <Note />
-              </Grid.Column>
-            </Grid> 
+            <div>
+              <div>
+                <HighCharts /> 
+              </div> 
+              <Grid>
+                  <Grid.Column  color="olive" className="specific-single-stock-news"> 
+                    <ProfileStockNewsList /> 
+                        {/* {this.props.profileNews.map((article, index) => <ProfileStockNewsItem article={article} key={index} />)} */}
+                      
+                      {/* <p> {this.props.selectedStock.name} </p>  */}
+              
+                      {/* 20:22 note - this does not error out but nothing renders */}
+                </Grid.Column>
+                <Grid.Column className="stock-notes" > 
+                    <Note />
+                </Grid.Column>
+              </Grid> 
+            </div> 
           }
           </div>
 
