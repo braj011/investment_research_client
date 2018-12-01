@@ -7,14 +7,31 @@
   margin: 1%;
 }
 
+.ui.large.image {
+  width: 100%;
+}
+
 .ui.grid {
   padding: 1%;
   width: 100%;
-
 }
 
 .ui.card-image {
-  width: 50%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 } 
+
+.ui.profile-card-image {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+} 
+
+.article-title-text {
+  font-size: 2rem;
+}
+
+.row.pt-4.text-left {
+  color: black;
+}

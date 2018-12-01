@@ -4,7 +4,9 @@ import '../App.css';
 import StockList from './ProfileComponents/StockList';
 import ProfileStockNewsList from './ProfileComponents/ProfileStockNewsList';
 import ProfileStockNewsItem from './ProfileComponents/ProfileStockNewsItem'
-import HighCharts from './ProfileComponents/HighCharts';
+// import HighCharts from './ProfileComponents/HighCharts';
+
+import Chart from './ProfileComponents/Chart';
 
 import Note from './ProfileComponents/Note';
 import { connect } from 'react-redux';
@@ -36,8 +38,6 @@ class Profile extends Component {
             <StockList getProfileNews={this.props.getProfileNews} /> 
           </span>
 
-          
-
           {!this.props.selectedStock ? 
             <span className="all-your-stock-news">
               <ProfileStockNewsList /> 
@@ -45,7 +45,7 @@ class Profile extends Component {
             :
             <div>
               <div>
-                <HighCharts /> 
+                <Chart /> 
               </div> 
               <Grid>
                   <Grid.Column  color="olive" className="specific-single-stock-news"> 

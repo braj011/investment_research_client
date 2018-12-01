@@ -12,6 +12,7 @@ import authReducer from './reducers/authReducer'
 import stockReducer from './reducers/stockReducer'
 import noteReducer from './reducers/noteReducer'
 import dataReducer from './reducers/dataReducer'
+import copiedArticleReducer from './reducers/copiedArticleReducer'
 
 
 const masterReducer = combineReducers({
@@ -19,7 +20,8 @@ const masterReducer = combineReducers({
   authStore: authReducer,
   stockStore: stockReducer,
   noteStore: noteReducer,
-  dataStore: dataReducer
+  dataStore: dataReducer,
+  copiedArticleStore: copiedArticleReducer
 })
 
 const loggerMiddleware = createLogger();

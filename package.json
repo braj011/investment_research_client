@@ -5,8 +5,11 @@
   "dependencies": {
     "browser-router": "^0.2.0",
     "bulma": "^0.7.2",
+    "chart.js": "^2.7.3",
     "react": "^16.6.3",
     "react-bootstrap": "^0.32.4",
+    "react-chartjs-2": "^2.7.4",
+    "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "^16.6.3",
     "react-highcharts": "^16.0.2",
     "react-redux": "^5.1.1",

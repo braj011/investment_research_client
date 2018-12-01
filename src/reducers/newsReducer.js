@@ -1,7 +1,6 @@
 const defaultState = {
   news: [],
-  profileNews: [],
-  // singleStockNews: []
+  profileNews: []
 }
 
 

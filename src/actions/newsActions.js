@@ -15,6 +15,7 @@ export function updateProfileNews(dispatch, news) {
   })
 }
 
+
 // export function updateSingleStockNews(dispatch, news) {
 //   console.log("Profile news being added / updated")
 //   dispatch({

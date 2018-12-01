@@ -20,7 +20,7 @@ const HeadlineNews = (props) => {
         </div>
         <div className="More-button">
           <a href={props.article.url} target="_blank">
-            <Button className="btn btn-outline-secondary">More</Button>
+            <Button className="btn btn-outline-secondary">Read more..</Button>
           </a>
         </div>
       </Card>

@@ -1,53 +1,68 @@
 import React from 'react'
 import { Card, Button, Image } from 'semantic-ui-react'
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import {copyToClipBoard} from '../../actions/copiedArticleActions' // my Action
 
-const ProfileNewsStockItem = (props) => {
- 
-  return (
-    <Card>
-      <h1 className="display-2 text-centre">
-        <a href={props.article.url } target="_blank">{props.article.title}</a>
-      </h1> 
-      <div>
-        {props.article.source.name}
-      </div>
-      <Image className="card-image" size="medium" floated="centre" src={props.article.urlToImage} alt={props.article.title} />
-      <div className="row pt-4 text-left">
-        {props.article.description} 
-      </div>
-     
+
+import { connect } from 'react-redux';
+
+class ProfileNewsStockItem extends React.Component {
+
+  copyToClip = (articleUrl) => {
+    this.props.copyToClipBoard(articleUrl) // action
+  }
+
+  
+  render() {
+    return (
+      <Card fluid>
+        <h1 className="article-title-text">
+          <a href={this.props.article.url } target="_blank">{this.props.article.title}</a>
+        </h1> 
+        <div>
+          {this.props.article.source.name}
+        </div>
+        <Image className="profile-card-image" src={this.props.article.urlToImage} alt={this.props.article.title} />
+        <div className="row pt-4 text-left">
+          {this.props.article.description} 
+        </div>
+
         <div className="More-button">
-          <a href={props.article.url} target="_blank">
-            <Button className="btn btn-outline-secondary">More</Button>
+          <a href={this.props.article.url} target="_blank">
+            <Button className="btn btn-outline-secondary">Read more..</Button>
           </a>
         </div>
-    </Card> 
-    // <div>
-    //   <ul> 
-    //     {props.article.title} - {props.article.author}
-    //   </ul>
-    // </div>
-  ) 
+        <CopyToClipboard 
+          onCopy={() => this.copyToClip(this.props.article.url)}
+          text={this.props.article.url}
+        >
+          <Button className='copy-to-clipboard' 
+          color={ this.props.urlCopied !== this.props.article.url ?  "black" : "green"}
+          >
+            {this.props.urlCopied !== this.props.article.url ?
+            "Copy url to clipboard"
+            :
+            "Copied"
+            }
+            </Button>
+        </CopyToClipboard> 
+      </Card> 
+
+    ) 
+  } 
 }
 
-export default ProfileNewsStockItem
+const mapStateToProps = (state) => {
+  return {
+    urlCopied: state.copiedArticleStore.urlCopied,
+  } 
+}
 
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    copyToClipBoard: (articleUrl) => copyToClipBoard(dispatch, articleUrl) 
+  }
+}
 
-{/* <Card fluid>
-          <h1 className="display-2 text-centre">
-            <a href={props.article.url}>{props.article.title}</a>
-          </h1> 
-          <div className="meta">
-            {props.article.source.name}
-          </div>
-          <Image size="large" src={props.article.urlToImage} alt={props.article.content} />
-        <div className="row pt-4 text-left">
-          {props.article.description} 
-        </div>
-        <div className="More-button">
-          <a href={props.article.url}>
-            <Button className="btn btn-outline-secondary">More</Button>
-          </a>
-        </div>
-      </Card> */}
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileNewsStockItem)

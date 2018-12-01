@@ -107,9 +107,13 @@ class StockList extends Component {
           </form>
         }
         {this.props.userStocks.map((stock, index) => <StockListItem stock={stock} key={index} selectStock={selectStock} />)}
-        <div>
-            <Button className="go-back-btn" type="button" onClick={goBack}> 🔙 </Button>
-        </div>
+        {!this.props.selectedStock ? 
+          null 
+          :        
+          <div>
+              <Button className="go-back-btn" type="button" onClick={goBack}> 🔙 </Button>
+          </div>
+        } 
           
       </div>
     ) 

@@ -11,6 +11,10 @@ class ProfileStockNewsList extends Component {
     filterInput: ""
   }
 
+  copyToClip = () => {
+
+  }
+
   handleFilter = (event) => {
     this.setState({
       filterInput: event.target.value
