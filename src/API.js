@@ -99,7 +99,7 @@ export default class API  {
 
   //  NOTES
 
-  static addNote (newNote, newNoteContent, userStock) {
+  static addNote (newNote, newNoteContent, newNoteUrl, userStock) {
     const token = localStorage.getItem('token')
     return fetch(this.noteUrl, {
       method: 'POST',
@@ -111,10 +111,10 @@ export default class API  {
       body: JSON.stringify({
         'title' : newNote,
         'content': newNoteContent,
+        'article_url' : newNoteUrl,
         'stock_id': userStock.id
       })
     }).then(resp => resp.json())  
-
   }
 
   static getExistingNotes = (stock) => {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button } from 'semantic-ui-react' 
+import { Button, Form } from 'semantic-ui-react' 
 import { connect } from 'react-redux'
 
 import API from '../../API'
@@ -12,7 +12,8 @@ class Note extends Component {
   state = {
     addNoteClick: false,
     newNote: "",
-    newNoteContent: ""
+    newNoteContent: "",
+    newNoteUrl: ""
   }
 
 //  componentDidMount() {
@@ -32,13 +33,14 @@ class Note extends Component {
   addNote = (e) => {
     e.preventDefault()
     // console.log("this.props.selectedStock:", this.props.selectedStock)
-    API.addNote(this.state.newNote, this.state.newNoteContent, this.props.selectedStock) 
-      .then(data => {
+    API.addNote(this.state.newNote, this.state.newNoteContent, this.state.newNoteUrl, this.props.selectedStock) 
+      .then(data =>
         !data ? 
         alert("You need to include a Title and Content to this note")
         :  
         this.props.addNewNoteAction(data)
-      }).then(() => this.setState({ newNote: '', newNoteContent: '',  addNoteClick: false}))
+      ).
+      then(() => this.setState({ newNote: '', newNoteContent: '', newNoteUrl: '',  addNoteClick: false}))
   } 
   
 
@@ -60,13 +62,15 @@ class Note extends Component {
              { !this.state.addNoteClick ? 
                 null 
                 :
-                <form>
+                <Form>
                   <input type="text" className="form-control" name="newNote" placeholder="Add Title" value={this.state.newNote} 
                     onChange={handleInput} /> 
                   <input type="text" className="form-control" name="newNoteContent" placeholder="Add Content" value={this.state.newNoteContent} 
                   onChange={handleInput} /> 
-                  <input type="submit" onClick={addNote}/> 
-                </form>
+                  <input type="text" className="form-control" name="newNoteUrl" placeholder="Add a link to an article (optional)" value={this.state.newNoteUrl} 
+                  onChange={handleInput} /> 
+                  <Button type="submit" onClick={addNote}>Submit</Button> 
+                </Form>
             }   
             <div> 
               {this.props.notes.slice(0).reverse().map((note, index) => <NoteItem note={note} key={index} />)}
