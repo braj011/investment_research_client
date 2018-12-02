@@ -68,11 +68,9 @@ class StockList extends Component {
    let stockDataUrl = `https://api.iextrading.com/1.0/stock/` + stock.ticker + `/chart/1y`
    console.log("stockData Url:", stockDataUrl)
    return fetch(stockDataUrl)
-    // .then(data => console.log(typeof data)) // type of response is an object 
-    // .then(resp => resp.json())
       .then(data => data.json())
-    // .then(resp => resp.json())
       .then(stockData => this.props.updateStockData(stockData)) // add this action / dispatch from the newly created dataReducer
+      .catch(error => console.log(error))
   }  
 
   // result of the API call to a stock
