@@ -10,7 +10,7 @@ import Chart from './ProfileComponents/Chart';
 
 import Note from './ProfileComponents/Note';
 import { connect } from 'react-redux';
-import { Grid, Card } from 'semantic-ui-react'
+import { Grid, Card, Button } from 'semantic-ui-react'
 
 class Profile extends Component {
 
@@ -25,6 +25,12 @@ class Profile extends Component {
 
   getSingleStockArticles = () => {
     this.props.profileNews.map((article, index) => <ProfileStockNewsItem article={article} key={index} />)
+  }
+
+  googleStockData = () => {
+    const q = `${this.props.selectedStock.name} share price`
+    const url = "http://google.com/search?q=" + q
+    window.open(url, '_blank')
   }
 
   render() {
@@ -46,6 +52,10 @@ class Profile extends Component {
             <div>
               <div>
                 <Chart /> 
+                <Button onClick={() => this.googleStockData()}> Get {this.props.selectedStock.name} stock price data</Button>
+                {/* <script>{q = x
+
+                }</script> */}
               </div> 
               <Grid>
                   <Grid.Column  color="olive" className="specific-single-stock-news"> 
