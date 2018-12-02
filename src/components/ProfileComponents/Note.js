@@ -39,8 +39,7 @@ class Note extends Component {
         alert("You need to include a Title and Content to this note")
         :  
         this.props.addNewNoteAction(data)
-      ).
-      then(() => this.setState({ newNote: '', newNoteContent: '', newNoteUrl: '',  addNoteClick: false}))
+      ).then(() => this.setState({ newNote: '', newNoteContent: '', newNoteUrl: '',  addNoteClick: false}))
   } 
   
 

@@ -39,7 +39,8 @@ class StockList extends Component {
         // console.log("userStock returned:", userStock) // data Object containing an array on a userStock object
         this.props.addNewStock(userStock) // works with ticker
         } 
-      })
+      }).then(() => this.props.getProfileNews(this.props.userStocks))
+      .then(() => this.setState({ newStock: '', newStockTicker: '', addStockClick: false}))
   }
 
   selectStock = (stock) => {

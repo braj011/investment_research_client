@@ -58,7 +58,7 @@ class Profile extends Component {
                 }</script> */}
               </div> 
               <Grid>
-                  <Grid.Column  color="olive" className="specific-single-stock-news"> 
+                  <Grid.Column  className="specific-single-stock-news"> 
                     <ProfileStockNewsList /> 
                         {/* {this.props.profileNews.map((article, index) => <ProfileStockNewsItem article={article} key={index} />)} */}
                       

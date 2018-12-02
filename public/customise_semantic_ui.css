@@ -37,5 +37,18 @@
 }
 
 .ui.button {
-  margin: 1%
+  margin: 1%;
+  background-color: honeydew;
 }
+
+.ui.button.stock-list {
+  background-color: darkseagreen;
+}
+
+.ui.button.stock-list:hover {
+  background-color: #b5cc18;
+}
+
+
+
+
