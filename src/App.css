@@ -118,6 +118,22 @@
   width: 500px;
 }
 
+.ui.black.button.copy-clipboard-btn {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ui.green.button.copy-clipboard-btn {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ui.black.button.copy-clipboard-btn:hover {
+  background-color: darkgreen;
+}
+
 
 /* .scroller {
   margin: 0 auto;

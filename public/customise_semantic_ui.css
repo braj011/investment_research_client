@@ -35,3 +35,7 @@
 .row.pt-4.text-left {
   color: black;
 }
+
+.ui.button {
+  margin: 1%
+}

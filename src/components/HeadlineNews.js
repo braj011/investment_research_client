@@ -9,7 +9,7 @@ const HeadlineNews = (props) => {
 
       <Card fluid>
           <h1 className="display-2 text-centre">
-            <a href={props.article.url} target="_blank">{props.article.title}</a>
+            <a href={props.article.url} target="_blank" rel="noopener noreferrer">{props.article.title}</a>
           </h1> 
           <div className="meta">
             {props.article.source.name}
@@ -19,7 +19,7 @@ const HeadlineNews = (props) => {
           {props.article.description} 
         </div>
         <div className="More-button">
-          <a href={props.article.url} target="_blank">
+          <a href={props.article.url} target="_blank" rel="noopener noreferrer">
             <Button className="btn btn-outline-secondary">Read more..</Button>
           </a>
         </div>

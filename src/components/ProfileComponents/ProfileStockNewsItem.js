@@ -3,6 +3,8 @@ import { Card, Button, Image } from 'semantic-ui-react'
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import {copyToClipBoard} from '../../actions/copiedArticleActions' // my Action
 
+import '../../App.css';
+
 
 import { connect } from 'react-redux';
 
@@ -15,9 +17,9 @@ class ProfileNewsStockItem extends React.Component {
   
   render() {
     return (
-      <Card fluid>
+      <Card >
         <h1 className="article-title-text">
-          <a href={this.props.article.url } target="_blank">{this.props.article.title}</a>
+          <a href={this.props.article.url } target="_blank" rel="noopener noreferrer">{this.props.article.title}</a>
         </h1> 
         <div>
           {this.props.article.source.name}
@@ -28,17 +30,13 @@ class ProfileNewsStockItem extends React.Component {
         </div>
 
         <div className="More-button">
-          <a href={this.props.article.url} target="_blank">
+          <a href={this.props.article.url} target="_blank" rel="noopener noreferrer">
             <Button className="btn btn-outline-secondary">Read more..</Button>
           </a>
         </div>
-        <CopyToClipboard 
-          onCopy={() => this.copyToClip(this.props.article.url)}
-          text={this.props.article.url}
-        >
-          <Button className='copy-to-clipboard' 
-          color={ this.props.urlCopied !== this.props.article.url ?  "black" : "green"}
-          >
+        <CopyToClipboard onCopy={() => this.copyToClip(this.props.article.url)} text={this.props.article.url}>
+          <Button className="copy-clipboard-btn" 
+            color={ this.props.urlCopied !== this.props.article.url ?  "black" : "green"}>
             {this.props.urlCopied !== this.props.article.url ?
             "Copy url to clipboard"
             :
