@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import StockListItem from './StockListItem'
 import { connect } from 'react-redux';
-import { Button } from 'semantic-ui-react' 
+import { Button, Icon } from 'semantic-ui-react' 
 
-import { addNewStock, selectStock, deselectStockAction } from '../../actions/stockActions'
+import { addNewStock, selectStock, deselectStockAction, removeUserStock } from '../../actions/stockActions'
 import { loadUserStockNotes } from '../../actions/noteActions'
 import { updateProfileNews } from '../../actions/newsActions'
 import { updateStockData } from '../../actions/dataActions'
@@ -51,7 +51,6 @@ class StockList extends Component {
     API.getExistingNotes(stock)
       .then((existingNotes) => this.props.loadUserStockNotes(existingNotes))
     }
-
   
   getSingleStocknews = (stock) => {
     return fetch('http://localhost:3000/api/v1/news_apis/', {
@@ -86,8 +85,13 @@ class StockList extends Component {
     this.props.deselectStockAction()
   } 
 
+  deleteUserStock = () => {
+    API.deleteUserStock(this.props.selectedStock.id)
+    this.props.removeUserStock(this.props.selectedStock) // an action to remove stock from stocklist on frontend
+  }
+
   render() {
-    const { handleClick, handleInput, addUserStock, selectStock, goBack } = this
+    const { handleClick, handleInput, addUserStock, selectStock, goBack, deleteUserStock } = this
     
     return(
       <div>
@@ -110,7 +114,9 @@ class StockList extends Component {
           null 
           :        
           <div>
-              <Button className="go-back-btn" type="button" onClick={goBack}> 🔙 </Button>
+            <Button className="angle double left" type="button" onClick={goBack}>BACK</Button>
+              <p/>
+            <Button className="delete-stock" type="button" onClick={deleteUserStock}>Delete stock</Button>
           </div>
         } 
           
@@ -133,6 +139,7 @@ const mapDispatchToProps = (dispatch) => {
     addNewStock: (newStock) => addNewStock(dispatch, newStock),
     selectStockAction: (selectedStock) => selectStock(dispatch, selectedStock),
     deselectStockAction: (deselect) => selectStock(dispatch, deselect),
+    removeUserStock: (stockToRemove) => removeUserStock(dispatch, stockToRemove),
     loadUserStockNotes: (existingNotes) => loadUserStockNotes(dispatch, existingNotes), 
     updateProfileNews: (news) => updateProfileNews(dispatch, news),
     updateStockData: (stockData) => updateStockData(dispatch, stockData)

@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 import API from './API'
 import LoginForm from './components/LoginForm'
+import AppDescription from './components/AppDescription'
 import { loginAction } from './actions/authActions'
 import { loadUserStocks } from './actions/stockActions'
 import { loadUserStockNotes } from './actions/noteActions'
@@ -74,6 +75,7 @@ class App extends Component {
     return (
       <div className="App">
         <NavLogin className="nav-bar" login={login} /> 
+        <AppDescription className="app-description"/> 
       {/* NOTE: routes potentially need to be from the App page + include withRouter if you're pushing history etc. / using props */}
         <Route exact path='/login' render={props => <LoginForm {...props} login={login} />} />
         <Route exact path='/signup' render={props => <SignupForm {...props} login={login} />} />

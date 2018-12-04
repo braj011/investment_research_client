@@ -45,9 +45,10 @@
   background-color: darkseagreen;
 }
 
-.ui.button.stock-list:hover {
-  background-color: #b5cc18;
+.ui.button.delete-stock {
+  padding: 3%;
 }
+
 
 
 

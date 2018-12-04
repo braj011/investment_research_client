@@ -15,6 +15,8 @@ export default function(state = defaultState, action)
       return { userStocks: [...state.userStocks], selectedStock: action.payload  }
     case 'DESELECT_USER_STOCK':
       return { userStocks: [...state.userStocks], selectedStock: defaultState.selectedStock  }
+    case 'REMOVE_USER_STOCK':
+      return { userStocks: [...state.userStocks].filter((stock) => stock !== action.payload), selectedStock: defaultState.selectedStock  }
     default:
       return state
   }

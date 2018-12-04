@@ -33,5 +33,16 @@ export function deselectStock(dispatch) {
   })
 }
 
+export function removeUserStock(dispatch, stockToRemove) {
+  console.log("remove the selected stock")
+  dispatch({
+    type: 'REMOVE_USER_STOCK',
+    payload: stockToRemove
+  })
+}
+
+
+
+
 
 
