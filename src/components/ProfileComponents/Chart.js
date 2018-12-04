@@ -35,7 +35,7 @@ class Chart extends Component{
   render() {
     return(
       <div>
-        <Line data={this.setChartData} width={200} height={150} />
+        <Line className="line-chart" data={this.setChartData} width={200} height={150} />
       </div>
 
     )

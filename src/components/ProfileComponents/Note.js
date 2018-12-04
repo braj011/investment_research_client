@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
-import { Button, Form } from 'semantic-ui-react' 
+
+import { Button, Form, Checkbox } from 'semantic-ui-react' 
 import { connect } from 'react-redux'
+
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 import API from '../../API'
 import NoteItem from './NoteItem'
@@ -13,7 +17,9 @@ class Note extends Component {
     addNoteClick: false,
     newNote: "",
     newNoteContent: "",
-    newNoteUrl: ""
+    newNoteUrl: "",
+    notifiClick: false,
+    startDate: new Date()
   }
 
 //  componentDidMount() {
@@ -26,14 +32,26 @@ class Note extends Component {
     this.setState({ addNoteClick: !this.state.addNoteClick })
   }
 
+  handleNotifClick = () => {
+    this.setState({ notifiClick: !this.state.notifiClick })
+  }
+
+
   handleInput = (e) => {
     this.setState({ [e.target.name]: e.target.value })
+  }
+
+  handleDateChange = (date) => {
+    this.setState({
+      startDate: date
+    })
   }
 
   addNote = (e) => {
     e.preventDefault()
     // console.log("this.props.selectedStock:", this.props.selectedStock)
     API.addNote(this.state.newNote, this.state.newNoteContent, this.state.newNoteUrl, this.props.selectedStock) 
+    // ADD IN ALL THE DATE STUFF
       .then(data =>
         !data ? 
         alert("You need to include a Title and Content to this note")
@@ -68,7 +86,15 @@ class Note extends Component {
                   onChange={handleInput} /> 
                   <input type="text" className="form-control" name="newNoteUrl" placeholder="Add a link to an article (optional)" value={this.state.newNoteUrl} 
                   onChange={handleInput} /> 
-                  <Button type="submit" onClick={addNote}>Submit</Button> 
+                  <p></p>
+                  <Checkbox label="Want an email notification / reminder?" onClick={this.handleNotifClick}/>
+                  {!this.state.notifiClick ? null : 
+                  <DatePicker selected={this.state.startDate} onChange={this.handleDateChange} 
+                   peekNextMonth
+                  placeholderText="Set up an email notification below:" showTimeSelect todayButton={"Get an email notification!"} /> }
+                  <div>
+                    <Button type="submit" onClick={addNote}>Submit</Button> 
+                  </div>
                 </Form>
             }   
             <div> 

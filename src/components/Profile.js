@@ -50,7 +50,7 @@ class Profile extends Component {
             </span>
             :
             <div>
-              <div>
+              <div className="chart=container">
                 <Button onClick={() => this.googleStockData()}> Get more complete {this.props.selectedStock.name} stock price data</Button>
                 <Chart /> 
               </div> 

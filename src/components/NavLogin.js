@@ -37,7 +37,7 @@ class NavLogin extends React.Component {
 
         <Navbar className="fixedTop"> 
           <Navbar.Header> 
-            <Link to="/">INVESTMENTS</Link> 
+            <Link to="/">stockNote</Link> 
           </Navbar.Header>
           <Nav>
             {!this.props.loggedIn ? 
