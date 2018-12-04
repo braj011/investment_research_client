@@ -95,16 +95,16 @@ export default class API  {
     .then(resp =>  resp.json())
   } 
 
-  static deleteUserStock (userStock) {
+  static deleteUserStock (selectedStock) {
     const token = localStorage.getItem('token')
-    return fetch(this.userStockUrl, {
+    return fetch(`${this.userStockUrl}/${selectedStock.id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': token  
       },
       body: JSON.stringify({
-        'user_stock' : userStock.id,
+        'id' : selectedStock.id,
         'type' : 'delete'
       })
     }).then(resp => resp.json())

@@ -86,8 +86,9 @@ class StockList extends Component {
   } 
 
   deleteUserStock = () => {
-    API.deleteUserStock(this.props.selectedStock.id)
+    API.deleteUserStock(this.props.selectedStock)
     this.props.removeUserStock(this.props.selectedStock) // an action to remove stock from stocklist on frontend
+    setTimeout(this.props.getProfileNews, 50)
   }
 
   render() {
