@@ -51,11 +51,8 @@ class Profile extends Component {
             :
             <div>
               <div>
+                <Button onClick={() => this.googleStockData()}> Get more complete {this.props.selectedStock.name} stock price data</Button>
                 <Chart /> 
-                <Button onClick={() => this.googleStockData()}> Get {this.props.selectedStock.name} stock price data</Button>
-                {/* <script>{q = x
-
-                }</script> */}
               </div> 
               <Grid>
                   <Grid.Column  className="specific-single-stock-news"> 

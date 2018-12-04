@@ -75,7 +75,7 @@ class App extends Component {
     return (
       <div className="App">
         <NavLogin className="nav-bar" login={login} /> 
-        <AppDescription className="app-description"/> 
+        <Route exact path ='/' render={() => <AppDescription/>} /> 
       {/* NOTE: routes potentially need to be from the App page + include withRouter if you're pushing history etc. / using props */}
         <Route exact path='/login' render={props => <LoginForm {...props} login={login} />} />
         <Route exact path='/signup' render={props => <SignupForm {...props} login={login} />} />

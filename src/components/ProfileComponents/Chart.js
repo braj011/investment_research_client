@@ -6,36 +6,36 @@ import { Line } from 'react-chartjs-2'
 
 class Chart extends Component{
 
-  state = {
-    localChartData: {}
-  }
+  // state = {
+  //   localChartData: {}
+  // }
 
-  componentWillMount(){
-    this.setChartData()
-  }
+  // componentWillMount(){
+  //   this.setChartData()
+  // }
+  // this.props.stockData.reduce( (object, [close, price]) => (object[close]=price, object), {}) 
 
   setChartData =() => {
    let chartData = {
-      labels: "Time", // this.props.stockData.
+      labels: this.props.stockData.map(array => array[0]), // this.props.stockData.
       datasets: [
         {
-          label: this.props.selectedStock.name,
-          data: this.props.stockData.map( stock => stock[1])
+          label: `${this.props.selectedStock.name} price data`,
+          data: this.props.stockData.map(array => array[1]),
+          borderColor: "rgba(75,192,192,1)",
+          borderJoinStyle: "miter"
         }
       ]
     }
-    this.setState({
-      localChartData: chartData 
-    })
+    // debugger
+    return chartData
   }
 
-  
+   // className="chart">CHART COMPONENT
   render() {
     return(
-      <div className="chart">CHART COMPONENT
-        {/* <Line 
-          data={this.state.localChartData} 
-        /> */}
+      <div>
+        <Line data={this.setChartData} width={200} height={150} />
       </div>
 
     )
