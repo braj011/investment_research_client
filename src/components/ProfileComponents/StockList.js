@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import StockListItem from './StockListItem'
 import { connect } from 'react-redux';
-import { Button, Icon } from 'semantic-ui-react' 
+import { Button, Icon, Form } from 'semantic-ui-react' 
 
 import { addNewStock, selectStock, deselectStockAction, removeUserStock } from '../../actions/stockActions'
 import { loadUserStockNotes } from '../../actions/noteActions'
@@ -96,21 +96,22 @@ class StockList extends Component {
     
     return(
       <div className="grey-text-larger"> Your Stocks
-        { !this.state.addStockClick ? 
-          null 
-          :
-          <form>
-            <input type="text" className="form-control" name="newStock" placeholder="Add Stock" value={this.state.newStock} 
-              onChange={handleInput}/> 
-            <input type="text" className="form-control" name="newStockTicker" placeholder="Add a Ticker" value={this.state.newStockTicker} 
-            onChange={handleInput}/> 
-            <input type="submit" onClick={addUserStock}/> 
-          </form>
-        }
+        
         {this.props.userStocks.map((stock, index) => <StockListItem stock={stock} key={index} selectStock={selectStock} />)}
         <div>
             <Button className="plus-btn" type="button" onClick={handleClick}> Add a Stock + </Button>
         </div>
+        { !this.state.addStockClick ? 
+          null 
+          :
+          <Form>
+            <input type="text" className="stock-form" name="newStock" placeholder="Add Stock" value={this.state.newStock} 
+              onChange={handleInput}/> 
+            <input type="text" className="stock-form" name="newStockTicker" placeholder="Add a Ticker" value={this.state.newStockTicker} 
+            onChange={handleInput}/> 
+            <input type="submit" onClick={addUserStock}/> 
+          </Form>
+        }
         {!this.props.selectedStock ? 
           null 
           :        

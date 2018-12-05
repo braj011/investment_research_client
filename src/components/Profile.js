@@ -38,9 +38,9 @@ class Profile extends Component {
       <div>
         <div className="whole-profile-container">
 
-          <span className="stock-list">
+          <div className="stock-list">
             <StockList getProfileNews={this.props.getProfileNews} /> 
-          </span>
+          </div>
 
           {!this.props.selectedStock ? 
             <span className="all-your-stock-news">
