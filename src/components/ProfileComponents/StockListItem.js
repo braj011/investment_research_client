@@ -13,7 +13,6 @@ class StockListItem extends React.Component {
         color={ (this.props.selectedStock === this.props.stock) ? "blue" : "deepseagreen" }> 
           {this.props.stock.name}
         </Button>
-        
       </div>
     ) 
   } 

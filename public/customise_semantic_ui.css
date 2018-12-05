@@ -40,10 +40,12 @@
   margin-right: auto;
 }
 
-.ui.large.image {
+.ui.image.profile-card-image {
   width: 90%;
   margin: auto;
 }
+
+
 
 .ui.grid {
   padding: 1%;

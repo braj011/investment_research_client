@@ -18,10 +18,10 @@ class ProfileNewsStockItem extends React.Component {
   render() {
     return (
       <Card >
-        <h1 className="article-title-text">
+        <h1 className="display-2 text-centre">
           <a href={this.props.article.url } target="_blank" rel="noopener noreferrer">{this.props.article.title}</a>
         </h1> 
-        <div>
+        <div className="news-source" >
           {this.props.article.source.name}
         </div>
         <Image className="profile-card-image" src={this.props.article.urlToImage} alt={this.props.article.title} />

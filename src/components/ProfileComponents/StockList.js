@@ -105,8 +105,10 @@ class StockList extends Component {
           null 
           :
           <Form>
-            <input type="text" className="stock-form" name="newStock" placeholder="Add Stock" value={this.state.newStock} 
-              onChange={handleInput}/> 
+              <input type="text" 
+              className="stock-form" 
+              name="newStock" placeholder="Add Stock" value={this.state.newStock} 
+                onChange={handleInput}/> 
             <input type="text" className="stock-form" name="newStockTicker" placeholder="Add a Ticker" value={this.state.newStockTicker} 
             onChange={handleInput}/> 
             <input type="submit" onClick={addUserStock}/> 
