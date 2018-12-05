@@ -46,7 +46,7 @@ class ProfileStockNewsList extends Component {
         placeholder="Filter articles by key words">
     </Input>
         {!this.props.selectedStock ? 
-          <Card.Group itemsPerRow={3}> 
+          <Card.Group className ="multiple-news-card-group" itemsPerRow={3}> 
             {this.filteredProfileNews().map((article, index) => <ProfileStockNewsItem article={article} key={index} />)}
           </Card.Group> 
         :

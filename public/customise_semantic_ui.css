@@ -2,13 +2,51 @@
 /* customise semantic css elements - using the right bootstrap terms / element names */
 
 
+/* .ui.button {
+  float: right;
+  margin: 0;
+} */
+
 /*  SEMANTIC UI CARDS  */
 .ui.three.cards {
   margin: 1%;
 }
 
+.ui.fluid.card {
+  border: blanchedalmond;
+  border-style: ridge;
+}
+
+.grey-text {
+  font-family: 'Lora', serif;
+  padding-top: 1%;
+}
+
+.grey-text-larger {
+  font-family: 'Lora', serif;
+  font-size: 1.4rem;
+  text-decoration: underline;
+  text-decoration-style: double;
+  padding-top: 1%;
+  margin-bottom: 2%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ui.form {
+  width: 20%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-control {
+  width: 20%
+}
+
 .ui.large.image {
-  width: 100%;
+  width: 90%;
+  margin: auto;
 }
 
 .ui.grid {
@@ -19,8 +57,10 @@
 .ui.card-image {
   width: 100%;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: auto; 
 } 
+
+
 
 .ui.profile-card-image {
   width: 80%;
@@ -28,28 +68,44 @@
   margin-right: auto;
 } 
 
-.article-title-text {
-  font-size: 2rem;
-}
 
-.row.pt-4.text-left {
-  color: black;
-}
 
 .ui.button {
   margin: 1%;
   background-color: honeydew;
 }
 
-.ui.button.stock-list {
-  background-color: darkseagreen;
+.ui.button.btn-signup {
+  margin-right: 2%;
+  float: right;
+  color: white;
+  background-color: #4183c4;
 }
+
+.ui.button.btn-login {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  float: right;
+}
+
+.ui.button.btn-logout {
+  float: right;
+  color: white;
+  background-color: #4183c4;
+}
+
+.ui.button.stock-list {
+  background-color: aliceblue;
+  font-size: 1.2rem;
+}
+
+/* .ui.button.plus-btn {
+  margin-right: 25%;
+} */
 
 .ui.button.delete-stock {
   padding: 3%;
 }
-
-
 
 
 

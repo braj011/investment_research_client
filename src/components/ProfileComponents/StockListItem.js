@@ -10,7 +10,7 @@ class StockListItem extends React.Component {
     return (
       <div>
         <Button className="stock-list" onClick={() => this.props.selectStock(this.props.stock)} 
-        color={ (this.props.selectedStock === this.props.stock) ? "olive" : "deepseagreen" }> 
+        color={ (this.props.selectedStock === this.props.stock) ? "blue" : "deepseagreen" }> 
           {this.props.stock.name}
         </Button>
         <br></br>

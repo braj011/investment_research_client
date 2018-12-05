@@ -73,9 +73,9 @@ class Note extends Component {
     const { handleClick, handleInput, addNote } = this
     
     return(
-      <div>NOTES
+      <div className="my-notes">My Notes
         <div>
-            <Button className="plus-btn" onClick={handleClick}> + </Button>
+            <Button className="plus-btn" onClick={handleClick}> Add a Note + </Button>
              { !this.state.addNoteClick ? 
                 null 
                 :
@@ -87,13 +87,20 @@ class Note extends Component {
                   <input type="text" className="form-control" name="newNoteUrl" placeholder="Add a link to an article (optional)" value={this.state.newNoteUrl} 
                   onChange={handleInput} /> 
                   <p></p>
-                  <Checkbox label="Want an email notification / reminder?" onClick={this.handleNotifClick}/>
+                  <Checkbox label="Send a copy to my email" onClick={this.handleNotifClick}/>
+                  <p></p>
                   {!this.state.notifiClick ? null : 
-                  <DatePicker selected={this.state.startDate} onChange={this.handleDateChange} 
-                   peekNextMonth
-                  placeholderText="Set up an email notification below:" showTimeSelect todayButton={"Get an email notification!"} /> }
+                  <div>
+                    <p>Set a time and date:</p>
+                    <DatePicker selected={this.state.startDate} onChange={this.handleDateChange} 
+                    peekNextMonth
+                    showTimeSelect  /> 
+                   </div>
+                  }
+
                   <div>
                     <Button type="submit" onClick={addNote}>Submit</Button> 
+
                   </div>
                 </Form>
             }   

@@ -36,8 +36,6 @@ class Profile extends Component {
   render() {
     return(
       <div>
-        <header> PROFILE PAGE
-        </header>
         <div className="whole-profile-container">
 
           <span className="stock-list">

@@ -2,13 +2,14 @@ import React from 'react'
 import { withRouter, Link } from 'react-router-dom'
 // import LoginForm from './LoginForm'
 // import SignupForm from './SignupForm'
+import { Button } from 'semantic-ui-react' 
 
 import API from '../API'
 
 import { connect } from 'react-redux';
 import { signoutAction } from '../actions/authActions'
 import { getNewsHeadlines } from '../actions/newsActions'
-import { Navbar, Nav, NavItem, Button } from 'react-bootstrap';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
 
 // signout function
@@ -36,23 +37,24 @@ class NavLogin extends React.Component {
     return(
 
         <Navbar className="fixedTop"> 
-          <Navbar.Header> 
-            <Link to="/">stockNote</Link> 
+          <Navbar.Header className="stockNote-title"> 
+            <Link to="/" >stockNote</Link> 
           </Navbar.Header>
           <Nav>
             {!this.props.loggedIn ? 
-                <div>
-                    <Link to="/login">
-                    <button className="btn btn-info">Log in</button>
+                <div >
+                   <Link to="/signup">
+                    <Button className="btn-signup">Register</Button>
                   </Link>
-                  <Link to="/signup">
-                    <button className="btn btn-info">Sign up</button>
+                  <Link to="/login">
+                    <Button className="btn-login">Log in</Button>
                   </Link>
                 </div>
                 :
                 <div>
-                  <span className="pr-3">Welcome, {this.props.firstName} </span>
-                  <Button bsStyle="info" className="btn btn-info" onClick={signout}>Log Out</Button>
+                  <Button bsStyle="info" className="btn-logout" onClick={signout}>Log Out</Button>
+                  <span className="welcome-user">Welcome, {this.props.firstName} </span>
+                  
                 </div>
     
             }

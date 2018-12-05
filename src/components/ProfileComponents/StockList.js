@@ -95,10 +95,7 @@ class StockList extends Component {
     const { handleClick, handleInput, addUserStock, selectStock, goBack, deleteUserStock } = this
     
     return(
-      <div>
-        <div>
-            <Button className="plus-btn" type="button" onClick={handleClick}> ➕ </Button>
-        </div>
+      <div className="grey-text-larger"> Your Stocks
         { !this.state.addStockClick ? 
           null 
           :
@@ -111,13 +108,18 @@ class StockList extends Component {
           </form>
         }
         {this.props.userStocks.map((stock, index) => <StockListItem stock={stock} key={index} selectStock={selectStock} />)}
+        <div>
+            <Button className="plus-btn" type="button" onClick={handleClick}> Add a Stock + </Button>
+        </div>
         {!this.props.selectedStock ? 
           null 
           :        
           <div>
-            <Button className="angle double left" type="button" onClick={goBack}>BACK</Button>
-              <p/>
             <Button className="delete-stock" type="button" onClick={deleteUserStock}>Delete stock</Button>
+             <p/>
+            <Button className="angle double left" type="button" onClick={goBack}>BACK</Button>
+              
+           
           </div>
         } 
           

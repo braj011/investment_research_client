@@ -1,6 +1,6 @@
 import React from 'react'
 import API from '../API'
-import { Button } from 'react-bootstrap'
+import { Button, Form } from 'semantic-ui-react' 
 
 class LoginForm extends React.Component {
 
@@ -34,19 +34,17 @@ class LoginForm extends React.Component {
     const { handleChange, handleSubmit } = this
     const { email, password } = this.state
     return( 
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
           <label className="grey-text" margin='normal'> Email </label>
           <input id='usernameInput'  name='email' className="form-control" onChange={handleChange} 
-          value={email}
-          />
-        <br/> 
+          value={email} />
+         <p></p> 
           <label className="grey-text" margin='normal'> Password</label>
           <input id='passwordInput' type='password' name='password' className="form-control" onChange={handleChange} 
-          value={password} 
-          />
+          value={password} />
         <br/>
-          <Button bsStyle="info" type="submit">Submit</Button>  
-      </form>
+          <Button className="auth-submit" bsStyle="info" type="submit">Submit</Button>  
+      </Form>
     )
   }
 
