@@ -36,7 +36,7 @@ class ProfileNewsStockItem extends React.Component {
         </div>
         <CopyToClipboard onCopy={() => this.copyToClip(this.props.article.url)} text={this.props.article.url}>
           <Button className="copy-clipboard-btn" 
-            color={ this.props.urlCopied !== this.props.article.url ?  "black" : "green"}>
+            color={ this.props.urlCopied !== this.props.article.url ?  "instagram" : "green"}>
             {this.props.urlCopied !== this.props.article.url ?
             "Copy url to clipboard"
             :

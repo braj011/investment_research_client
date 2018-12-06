@@ -47,25 +47,26 @@ class Profile extends Component {
               <ProfileStockNewsList /> 
             </span>
             :
-            <div>
-              <div className="chart=container">
-                <Button onClick={() => this.googleStockData()}> Get more complete {this.props.selectedStock.name} stock price data</Button>
-                <Chart /> 
-              </div> 
-              <Grid>
-                  <Grid.Column  className="specific-single-stock-news"> 
-                    <ProfileStockNewsList /> 
-                        {/* {this.props.profileNews.map((article, index) => <ProfileStockNewsItem article={article} key={index} />)} */}
-                      
-                      {/* <p> {this.props.selectedStock.name} </p>  */}
-              
-                      {/* 20:22 note - this does not error out but nothing renders */}
-                </Grid.Column>
-                <Grid.Column className="stock-notes" > 
-                    <Note />
-                </Grid.Column>
-              </Grid> 
-            </div> 
+            <div className="single-stock-full-container">
+              <Grid className="col1-chart-and-news">
+                <Grid.Row className="chart-container">
+                  <Chart />
+                </Grid.Row>
+                <Grid.Row>
+                  <Button className="google-stock" onClick={() => this.googleStockData()}> Get more complete {this.props.selectedStock.name} price data</Button>
+                </Grid.Row> 
+                <Grid.Row  className="specific-single-stock-news"> 
+                  <ProfileStockNewsList /> 
+                </Grid.Row>
+              </Grid>
+                <Grid className="stock-notes"> 
+                    <Grid.Column  > 
+                        <Note />
+                    </Grid.Column>
+                </Grid> 
+              </div>
+            
+            
           }
           </div>
 

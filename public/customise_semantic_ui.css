@@ -29,13 +29,13 @@
   text-decoration-style: double;
   padding-top: 1%;
   margin-bottom: 2%;
-  text-align: center;
+  /* text-align: center; */
   margin-left: auto;
   margin-right: auto;
 }
 
 .ui.form {
-  width: 20%;
+  
   margin-left: auto;
   margin-right: auto;
 }
@@ -58,6 +58,12 @@
   margin-right: auto; 
 } 
 
+.ui.large.image {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 
 .ui.profile-card-image {
@@ -67,10 +73,37 @@
 } 
 
 
-
 .ui.button {
   margin: 1%;
   background-color: honeydew;
+}
+
+.ui.button.stock-items {
+  margin-top: 10%;
+  margin-bottom: 5%;
+  position: inherit-relative;
+  float: left;
+  font-size: 1.2rem;
+}
+
+.ui.button.plus-btn {
+  font-size: 1.2rem;
+  background-color: rgba(124, 248, 145, 0.863);
+  width: 100%;
+}
+
+.ui.button.plus-note-btn {
+  font-size: 1.2rem;
+  background-color: rgba(124, 248, 145, 0.863);
+  float: right;
+}
+
+.ui.button.delete-stock {
+  background-color: rgba(231, 117, 117, 0.863);
+  font-size: 1.2rem;
+  width: 100%;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 .ui.button.btn-signup {
@@ -97,13 +130,15 @@
   font-size: 1.2rem;
 }
 
-/* .ui.button.plus-btn {
-  margin-right: 25%;
-} */
-
-.ui.button.delete-stock {
+.ui.button.google-stock {
+  width: 100%;
+  margin-right: 2%;
   padding: 3%;
+  font-size: 1.5rem;
 }
+
+
+
 
 
 

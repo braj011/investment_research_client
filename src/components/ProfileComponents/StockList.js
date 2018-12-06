@@ -1,17 +1,14 @@
 import React, { Component } from 'react'
 import StockListItem from './StockListItem'
 import { connect } from 'react-redux';
-import { Button, Icon, Form } from 'semantic-ui-react' 
+import { Button, Icon, Form, Divider } from 'semantic-ui-react' 
 
 import { addNewStock, selectStock, deselectStockAction, removeUserStock } from '../../actions/stockActions'
 import { loadUserStockNotes } from '../../actions/noteActions'
 import { updateProfileNews } from '../../actions/newsActions'
 import { updateStockData } from '../../actions/dataActions'
 
-
-
 import API from '../../API'
-
 
 class StockList extends Component {
 
@@ -95,25 +92,27 @@ class StockList extends Component {
     const { handleClick, handleInput, addUserStock, selectStock, goBack, deleteUserStock } = this
     
     return(
+
       <div className="grey-text-larger"> Your Stocks
         
         {this.props.userStocks.map((stock, index) => <StockListItem stock={stock} key={index} selectStock={selectStock} />)}
+        {/* {this.props.userStocks.length > 0 ? <Divider/> : null } */}
         <div>
             <Button className="plus-btn" type="button" onClick={handleClick}> Add a Stock + </Button>
         </div>
+        
         { !this.state.addStockClick ? 
           null 
           :
           <Form>
-              <input type="text" 
-              className="stock-form" 
-              name="newStock" placeholder="Add Stock" value={this.state.newStock} 
-                onChange={handleInput}/> 
+            <input type="text" className="stock-form" name="newStock" placeholder="Add Stock" value={this.state.newStock} 
+              onChange={handleInput}/> 
             <input type="text" className="stock-form" name="newStockTicker" placeholder="Add a Ticker" value={this.state.newStockTicker} 
-            onChange={handleInput}/> 
-            <input type="submit" onClick={addUserStock}/> 
+              onChange={handleInput}/> 
+            <Button type="submit" onClick={addUserStock} >Submit</Button> 
           </Form>
         }
+        <p></p>
         {!this.props.selectedStock ? 
           null 
           :        
@@ -121,8 +120,6 @@ class StockList extends Component {
             <Button className="delete-stock" type="button" onClick={deleteUserStock}>Delete stock</Button>
              <p/>
             <Button className="angle double left" type="button" onClick={goBack}>BACK</Button>
-              
-           
           </div>
         } 
           

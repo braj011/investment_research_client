@@ -121,15 +121,17 @@
   display: flex;
   flex-direction: row;
   align-self: flex-start;
-  text-align: left;
+  align-content: left;
   align-content: flex-start;
   flex-basis: 15%;
   margin-right: 1%;
-  justify-content: left;
+  /* justify-content: left; */
   background: aliceblue;
-  float: left;
+  /* float: left; */
+  width: 100%;
   padding: 1% 1%;
-  /* width: 200px;     -  Didn't seem to work */
+  /* position: fixed; */
+
 }
 
 .stock-form {
@@ -138,29 +140,10 @@
 
 .all-your-stock-news {
   flex: 1;
-  flex-basis: 65%;
+  flex-basis: 60%;
   background: #f0fff099;
   overflow-y: scroll;
   margin-right: 1%;
-}
-
-.specific-single-stock-news {
-  padding: 0;
-  flex: 1;
-  display: flex;
-  flex-basis: 65%;
-  overflow-y: scroll;
-  height: 100vh;
-  /* justify-content: center; */
-  background: blanchedalmond;
-  width: 70%;
-  /* flex: 1;
-  flex-basis: 65%;
-  background:  #b5cc18;
-  height: 150 vh;
-  overflow-y: scroll;
-  margin-right: 1%;
-  width: 500px; */
 }
 
 .profile-card-image {
@@ -168,57 +151,99 @@
   margin: auto;
 }
 
-/* .news-source {
- align
-} */
-
-.chart-container {
+.single-stock-full-container {
   display: flex;
-  margin: 2rem;
-  text-align: center;
   flex-direction: row;
-  height: 50vh;
+  flex-basis: 100%;
+  margin-right: 2%;
+  height: 150vh;
 }
 
-.chartjs-render-monitor {
+.col1-chart-and-news {
+  flex: 1;
+  display: flex;
+}
+.chart-container {
+  display: flex;
+  /* margin: 1rem; */
+  text-align: center;
+  flex-direction: row;
+  width: 100%;
+}
+
+.chartjs-size-monitor {
   flex: 1;
   display: flex;
   flex-basis: 50%;
+  height: 200%;
+  width: 100%;
 }
 
 
-.stock-notes {
-  padding: 0;
-  margin-left: 1%;
+.specific-single-stock-news {
+  padding: 2%;
   flex: 1;
   display: flex;
-  flex-basis: 25%;
+  flex-basis: 65%;
   overflow-y: scroll;
   height: 100vh;
   /* justify-content: center; */
-  background: #e7e7e7;
-  width: 30%;
+  background: blanchedalmond;
+  margin-right: 2%;
+  margin-left: 1%;
 }
 
-.my-notes {
+.stock-notes {
+  padding: 0;
+  margin-left: 20%;
+  flex: 1;
+  display: flex;
+  /* flex-basis: 15%; */
+  text-align: left;
+  overflow-y: scroll;
+  height: 150vh;
+  /* justify-content: center; */
+  background: aliceblue;
+  width: 30%;
+  align-items: flex-start;
+}
+
+.my-notes-nav {
   font-family: 'Lora', serif;
   font-size: 2rem;
   text-align: left;
   margin-bottom: 3%;
-  
-
+  position: -webkit-sticky;
+  position: sticky;
+  top: 1rem;
+  z-index: 10;
+  width: 100%;
+  padding-top: 5%;
+  background-color: aliceblue;
 }
 
-.ui.black.button.copy-clipboard-btn {
+.note-display {
+  z-index: 5;
+}
+
+.filter-articles {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  width: 25%;
+}
+
+.ui.instagram.button.copy-clipboard-btn {
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 1%;
 }
 
 .ui.green.button.copy-clipboard-btn {
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 1%;
 }
 
 .ui.black.button.copy-clipboard-btn:hover {

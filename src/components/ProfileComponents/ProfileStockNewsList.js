@@ -38,7 +38,7 @@ class ProfileStockNewsList extends Component {
 
     return(
       <span>
-      <Input
+      <Input className="filter-articles"
         icon="search"
         name="filterInput"
         onChange={this.handleFilter}

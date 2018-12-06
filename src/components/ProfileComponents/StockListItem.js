@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from 'semantic-ui-react' 
+import { Button, Divider } from 'semantic-ui-react' 
 import { connect } from 'react-redux';
 
 
@@ -9,8 +9,8 @@ class StockListItem extends React.Component {
   render() {
     return (
       <div>
-        <Button className="stock-list" onClick={() => this.props.selectStock(this.props.stock)} 
-        color={ (this.props.selectedStock === this.props.stock) ? "blue" : "deepseagreen" }> 
+        <Button className="stock-items" onClick={() => this.props.selectStock(this.props.stock)} >
+        {/* color={ (this.props.selectedStock === this.props.stock) ? "blue" : "deepseagreen" }>  */}
           {this.props.stock.name}
         </Button>
       </div>
