@@ -80,6 +80,8 @@
 
 .row.pt-4.text-left {
   color: black;
+  font-size: 1.2rem;
+  font-family: 'Lato', sans-serif;
   text-align: left;
   width: 90%;
   margin: auto;
@@ -99,7 +101,7 @@
 .whole-profile-container {
   display: flex;
   margin: 2rem;
-  text-align: left;
+  /* text-align: left; */
   flex-direction: row;
   height: 100vh;
 }
@@ -117,16 +119,19 @@
 .stock-list {
   /* flex: 1; */
   display: flex;
-  /* flex-direction: row; */
-  /* align-self: flex-start; */
-  text-align: left;
+  flex-direction: row;
+  align-self: flex-start;
+  align-content: left;
+  align-content: flex-start;
   flex-basis: 15%;
   margin-right: 1%;
-  justify-content: left;
+  /* justify-content: left; */
   background: aliceblue;
-  float: left;
+  /* float: left; */
+  width: 100%;
   padding: 1% 1%;
-  /* width: 200px;     -  Didn't seem to work */
+  /* position: fixed; */
+
 }
 
 .stock-form {
@@ -135,78 +140,110 @@
 
 .all-your-stock-news {
   flex: 1;
-  flex-basis: 65%;
+  flex-basis: 60%;
   background: #f0fff099;
   overflow-y: scroll;
   margin-right: 1%;
 }
 
-.specific-single-stock-news {
-  padding: 0;
+.profile-card-image {
+  width: 90%;
+  margin: auto;
+}
+
+.single-stock-full-container {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 100%;
+  margin-right: 2%;
+  height: 150vh;
+}
+
+.col1-chart-and-news {
   flex: 1;
   display: flex;
-  flex-basis: 65%;
-  overflow-y: scroll;
-  height: 100vh;
-  /* justify-content: center; */
-  background: #b5cc18;
-  width: 70%;
-  /* flex: 1;
-  flex-basis: 65%;
-  background:  #b5cc18;
-  height: 150 vh;
-  overflow-y: scroll;
-  margin-right: 1%;
-  width: 500px; */
 }
-
 .chart-container {
   display: flex;
-  margin: 2rem;
+  /* margin: 1rem; */
   text-align: center;
   flex-direction: row;
-  height: 50vh;
+  width: 100%;
 }
 
-.chartjs-render-monitor {
+.chartjs-size-monitor {
   flex: 1;
   display: flex;
   flex-basis: 50%;
+  height: 200%;
+  width: 100%;
 }
 
 
-.stock-notes {
-  padding: 0;
-  margin-left: 1%;
+.specific-single-stock-news {
+  padding: 2%;
   flex: 1;
   display: flex;
-  flex-basis: 25%;
+  flex-basis: 65%;
   overflow-y: scroll;
   height: 100vh;
   /* justify-content: center; */
-  background: #e7e7e7;
-  width: 30%;
+  background: blanchedalmond;
+  margin-right: 2%;
+  margin-left: 1%;
 }
 
-.my-notes {
+.stock-notes {
+  padding: 0;
+  margin-left: 20%;
+  flex: 1;
+  display: flex;
+  /* flex-basis: 15%; */
+  text-align: left;
+  overflow-y: scroll;
+  height: 150vh;
+  /* justify-content: center; */
+  background: aliceblue;
+  width: 30%;
+  align-items: flex-start;
+}
+
+.my-notes-nav {
   font-family: 'Lora', serif;
   font-size: 2rem;
   text-align: left;
   margin-bottom: 3%;
-  
-
+  position: -webkit-sticky;
+  position: sticky;
+  top: 1rem;
+  z-index: 10;
+  width: 100%;
+  padding-top: 5%;
+  background-color: aliceblue;
 }
 
-.ui.black.button.copy-clipboard-btn {
+.note-display {
+  z-index: 5;
+}
+
+.filter-articles {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  width: 25%;
+}
+
+.ui.instagram.button.copy-clipboard-btn {
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 1%;
 }
 
 .ui.green.button.copy-clipboard-btn {
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 1%;
 }
 
 .ui.black.button.copy-clipboard-btn:hover {

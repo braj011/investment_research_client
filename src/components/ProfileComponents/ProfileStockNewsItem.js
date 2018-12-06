@@ -18,10 +18,10 @@ class ProfileNewsStockItem extends React.Component {
   render() {
     return (
       <Card >
-        <h1 className="article-title-text">
+        <h1 className="display-2 text-centre">
           <a href={this.props.article.url } target="_blank" rel="noopener noreferrer">{this.props.article.title}</a>
         </h1> 
-        <div>
+        <div className="news-source" >
           {this.props.article.source.name}
         </div>
         <Image className="profile-card-image" src={this.props.article.urlToImage} alt={this.props.article.title} />
@@ -36,7 +36,7 @@ class ProfileNewsStockItem extends React.Component {
         </div>
         <CopyToClipboard onCopy={() => this.copyToClip(this.props.article.url)} text={this.props.article.url}>
           <Button className="copy-clipboard-btn" 
-            color={ this.props.urlCopied !== this.props.article.url ?  "black" : "green"}>
+            color={ this.props.urlCopied !== this.props.article.url ?  "instagram" : "green"}>
             {this.props.urlCopied !== this.props.article.url ?
             "Copy url to clipboard"
             :

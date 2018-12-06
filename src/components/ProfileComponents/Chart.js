@@ -35,7 +35,21 @@ class Chart extends Component{
   render() {
     return(
       <div>
-        <Line className="line-chart" data={this.setChartData} width={200} height={150} />
+        <Line className="line-chart" 
+        data={this.setChartData} pointBackgroundColor="#c07171" 
+        width={900}
+        height={100}
+        options={{
+          maintainAspectRatio: false,
+          legend: {
+            display: true,
+            labels: {
+                fontColor: 'black',
+                fontSize: 18
+            }
+          }}
+        }
+        />
       </div>
 
     )
