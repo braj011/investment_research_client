@@ -75,14 +75,14 @@ class Note extends Component {
     
     return(
       <div>
-        <header className="my-notes-nav">My Notes
+        <div className="my-notes-nav">My Notes
             <Button className="plus-note-btn" onClick={handleClick}> Add a Note + </Button>
-        </header>
+        </div>
         <div>
           { !this.state.addNoteClick ? 
             null 
             :
-            <Form>
+            <Form> 
               <input type="text" className="form-control" name="newNote" placeholder="Add Title" value={this.state.newNote} 
                 onChange={handleInput} /> 
               <input type="text" className="form-control" name="newNoteContent" placeholder="Add Content" value={this.state.newNoteContent} 
@@ -104,7 +104,7 @@ class Note extends Component {
                 </div>
               }
               <div>
-                <Button type="submit" onClick={addNote}>Submit</Button> 
+                <Button className="submit" type="submit" onClick={addNote}>Submit</Button> 
 
               </div>
             </Form>

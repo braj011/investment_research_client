@@ -94,11 +94,12 @@ class StockList extends Component {
     return(
 
       <div className="grey-text-larger"> Your Stocks
-        
+        <p></p>
         {this.props.userStocks.map((stock, index) => <StockListItem stock={stock} key={index} selectStock={selectStock} />)}
         {/* {this.props.userStocks.length > 0 ? <Divider/> : null } */}
         <div>
-            <Button className="plus-btn" type="button" onClick={handleClick}> Add a Stock + </Button>
+            <Button className="plus-btn" type="button" onClick={handleClick}> 
+              { !this.state.addStockClick ? "Add a Stock +" : "Add a Stock -" } </Button>
         </div>
         
         { !this.state.addStockClick ? 
@@ -109,7 +110,7 @@ class StockList extends Component {
               onChange={handleInput}/> 
             <input type="text" className="stock-form" name="newStockTicker" placeholder="Add a Ticker" value={this.state.newStockTicker} 
               onChange={handleInput}/> 
-            <Button type="submit" onClick={addUserStock} >Submit</Button> 
+            <Button type="submit" className="submit" onClick={addUserStock} >Submit</Button> 
           </Form>
         }
         <p></p>

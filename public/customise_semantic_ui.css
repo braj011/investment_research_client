@@ -8,6 +8,22 @@
 } */
 
 /*  SEMANTIC UI CARDS  */
+
+.ui.segment {
+  font-size: 1.2rem;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Lato', sans-serif;
+}
+
+
+.ui.blue.segment:not(.inverted)  {
+  border: 2px solid #2185d0;
+  /* font-family: 'Lora', serif; */
+  
+}
+
 .ui.three.cards {
   margin: 1%;
 }
@@ -15,29 +31,20 @@
 .ui.fluid.card {
   border: blanchedalmond;
   border-style: ridge;
+  font-size: 1.2rem;
 }
 
-.grey-text {
-  font-family: 'Lora', serif;
-  padding-top: 1%;
+.ui.two.cards {
+  margin: 0;
 }
 
-.grey-text-larger {
-  font-family: 'Lora', serif;
-  font-size: 1.4rem;
-  text-decoration: underline;
-  text-decoration-style: double;
-  padding-top: 1%;
-  margin-bottom: 2%;
-  /* text-align: center; */
-  margin-left: auto;
-  margin-right: auto;
-}
+
 
 .ui.form {
-  
   margin-left: auto;
   margin-right: auto;
+  font-size: 1.2rem;
+  font-family: 'Lora', serif;
 }
 
 .ui.image.profile-card-image {
@@ -76,6 +83,7 @@
 .ui.button {
   margin: 1%;
   background-color: honeydew;
+  font-size: 1.2rem;
 }
 
 .ui.button.stock-items {
@@ -90,6 +98,14 @@
   font-size: 1.2rem;
   background-color: rgba(124, 248, 145, 0.863);
   width: 100%;
+}
+
+.ui.button.submit {
+  font-size: 1.2rem;
+  background-color: rgba(124, 248, 145, 0.863);
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 .ui.button.plus-note-btn {
@@ -110,6 +126,7 @@
   margin-right: 2%;
   float: right;
   color: white;
+  font-size: 1.2rem;
   background-color: #4183c4;
 }
 
@@ -117,11 +134,13 @@
   margin-top: 1%;
   margin-bottom: 1%;
   float: right;
+  font-size: 1.2rem;
 }
 
 .ui.button.btn-logout {
   float: right;
   color: white;
+  font-size: 1.2rem;
   background-color: #4183c4;
 }
 
@@ -135,8 +154,26 @@
   margin-right: 2%;
   padding: 3%;
   font-size: 1.5rem;
+  border: #2185d0;
 }
 
+.ui.instagram.button.copy-clipboard-btn {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1%;
+}
+
+.ui.green.button.copy-clipboard-btn {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1%;
+}
+
+.ui.black.button.copy-clipboard-btn:hover {
+  background-color: darkgreen;
+}
 
 
 

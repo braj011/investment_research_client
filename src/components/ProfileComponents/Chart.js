@@ -37,7 +37,7 @@ class Chart extends Component{
       <div>
         <Line className="line-chart" 
         data={this.setChartData} pointBackgroundColor="#c07171" 
-        width={900}
+        width={800}
         height={100}
         options={{
           maintainAspectRatio: false,

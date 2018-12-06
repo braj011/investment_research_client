@@ -53,7 +53,7 @@ class Profile extends Component {
                   <Chart />
                 </Grid.Row>
                 <Grid.Row>
-                  <Button className="google-stock" onClick={() => this.googleStockData()}> Get more complete {this.props.selectedStock.name} price data</Button>
+                  <Button primary className="google-stock" onClick={() => this.googleStockData()}> Get more complete {this.props.selectedStock.name} price data</Button>
                 </Grid.Row> 
                 <Grid.Row  className="specific-single-stock-news"> 
                   <ProfileStockNewsList /> 
