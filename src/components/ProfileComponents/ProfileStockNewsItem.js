@@ -14,6 +14,7 @@ class ProfileNewsStockItem extends React.Component {
     this.props.copyToClipBoard(articleUrl) // action
   }
 
+
   
   render() {
     return (

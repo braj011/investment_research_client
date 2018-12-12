@@ -29,7 +29,7 @@
 }
 
 .ui.fluid.card {
-  border: blanchedalmond;
+  border: limegreen;
   border-style: ridge;
   font-size: 1.2rem;
 }
@@ -154,7 +154,7 @@
   margin-right: 2%;
   padding: 3%;
   font-size: 1.5rem;
-  border: #2185d0;
+  /* border: #2185d0; */
 }
 
 .ui.instagram.button.copy-clipboard-btn {
