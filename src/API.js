@@ -2,7 +2,8 @@
 export default class API  {
 
   static getNewsHeadlines = () => {
-    return fetch('https://stock-note-server.herokuapp.com/api/v1/news_apis/')
+    return fetch('https://stock-note-server.herokuapp.com/news_apis/')
+    // return fetch('https://stock-note-server.herokuapp.com/api/v1/news_apis/')
       .then(resp => resp.json())
       .then(newsData => {
         return newsData.articles.map(article => {
@@ -16,7 +17,8 @@ export default class API  {
   } 
 
   static init () {
-    this.baseUrl = 'https://stock-note-server.herokuapp.com/api/v1'
+    this.baseUrl = 'https://stock-note-server.herokuapp.com'
+    // this.baseUrl = 'https://stock-note-server.herokuapp.com/api/v1'
     this.loginUrl = this.baseUrl + '/login'
     this.signupUrl = this.baseUrl + '/signup'
     this.validateUrl = this.baseUrl + '/validate'
@@ -135,8 +137,8 @@ export default class API  {
 
   static getExistingNotes = (stock) => {
     const token = localStorage.getItem('token')
-    // debugger
-    return fetch("https://stock-note-server.herokuapp.com/api/v1/get_user_notes", {
+    return fetch("https://stock-note-server.herokuapp.com/get_user_notes", {
+    // return fetch("https://stock-note-server.herokuapp.com/api/v1/get_user_notes", {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',
