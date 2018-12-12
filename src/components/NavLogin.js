@@ -1,5 +1,5 @@
 import React from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import { Route, withRouter, Link } from 'react-router-dom'
 // import LoginForm from './LoginForm'
 // import SignupForm from './SignupForm'
 import { Button } from 'semantic-ui-react' 
@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { signoutAction } from '../actions/authActions'
 import { getNewsHeadlines } from '../actions/newsActions'
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import MainContent from './MainContent';
 
 
 // signout function
@@ -19,9 +20,21 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
 class NavLogin extends React.Component {
 
+  state = {
+    titleClicked: false
+  }
+
   signout = () => {
     this.props.signoutAction()
     localStorage.removeItem('token')
+    this.props.history.push('/')
+    API.getNewsHeadlines()
+      .then(articles => this.props.getNewsHeadlines(articles))
+  }
+
+  showGeneralNews = () => {    
+    console.log("is this showGeneralNews function onClick running?")
+
     this.props.history.push('/')
     API.getNewsHeadlines()
       .then(articles => this.props.getNewsHeadlines(articles))
@@ -33,12 +46,15 @@ class NavLogin extends React.Component {
 
   render() {
     // const { login, signup }   = this.props
-    const { signout } = this
+    const { signout, showGeneralNews } = this
     return(
 
         <Navbar className="fixedTop"> 
           <Navbar.Header className="stockNote-title"> 
-            <Link to="/" >stockNote</Link> 
+            {/* <Route exact path ='/' render={() => <MainContent />} />  */}
+              <Link to="/" onClick={() => showGeneralNews()}  render={() => <MainContent />}>stockNote
+            {/* // */}
+            </Link> 
           </Navbar.Header>
           <Nav>
             {!this.props.loggedIn ? 

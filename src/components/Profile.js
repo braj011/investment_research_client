@@ -14,15 +14,6 @@ import { Grid, Card, Button } from 'semantic-ui-react'
 
 class Profile extends Component {
 
-
-  // fakeArticles = () => {
-  //   return  [...Array(100)].map((val, i) => `Article ${i}`);
-  // }
-
-  // fakeNotes = () => {
-  //   return  [...Array(50)].map((val, i) => `Note ${i}`);
-  // }
-
   getSingleStockArticles = () => {
     this.props.profileNews.map((article, index) => <ProfileStockNewsItem article={article} key={index} />)
   }
