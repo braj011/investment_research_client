@@ -50,7 +50,8 @@ class StockList extends Component {
     }
   
   getSingleStocknews = (stock) => {
-    return fetch('https://stock-note-server.herokuapp.com/api/v1/news_apis/', {
+    // return fetch('https://stock-note-server.herokuapp.com/api/v1/news_apis/', {
+    return fetch('http://localhost:3000/api/v1/news_apis/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -61,7 +62,7 @@ class StockList extends Component {
     .then(news => this.props.updateProfileNews(news.articles))
   }
 
- getStockData = (stock) => {
+  getStockData = (stock) => {
    let stockDataUrl = `https://api.iextrading.com/1.0/stock/` + stock.ticker + `/chart/1y`
    console.log("stockData Url:", stockDataUrl)
    return fetch(stockDataUrl)
@@ -69,13 +70,6 @@ class StockList extends Component {
       .then(stockData => this.props.updateStockData(stockData)) // add this action / dispatch from the newly created dataReducer
       .catch(error => console.log(error))
   }  
-
-  // result of the API call to a stock
-// [{date: "2017-11-29", open: 1194.8, high: 1194.8, low: 1145.19, close: 1161.27, volume: 9257512,…},…]
-// [0 … 99]
-// [100 … 199]
-// [200 … 252]
-  
 
   goBack = () => {
     this.props.getProfileNews()
