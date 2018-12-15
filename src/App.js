@@ -56,8 +56,8 @@ class App extends Component {
 
     getProfileNews = () => {
       let stocks = this.props.userStocks.map(stockItem => stockItem.name)
-      return fetch('https://stock-note-server.herokuapp.com/news_apis/', {
       // return fetch('https://stock-note-server.herokuapp.com/api/v1/news_apis/', {
+      return fetch('http://localhost:3000/api/v1/news_apis/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

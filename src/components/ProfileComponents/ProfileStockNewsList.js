@@ -9,7 +9,8 @@ import { connect } from 'react-redux';
 class ProfileStockNewsList extends Component {
 
   state = {
-    filterInput: ""
+    filterInput: "",
+    searchInput: ""
   }
 
   handleFilter = (event) => {
@@ -27,6 +28,7 @@ class ProfileStockNewsList extends Component {
     })
   }
 
+  // DECEMBER - mod 6 attempt to filter stock specific news without crashing
   filterSingleStockNews = () => {
     if (this.props.profileNews.length > 20 ) {
       const filteredNews = [...this.props.profileNews]
@@ -47,13 +49,27 @@ class ProfileStockNewsList extends Component {
     const { filteredProfileNews } = this
     return(
       <span>
-      <Input className="filter-articles"
-        icon="search"
-        name="filterInput"
-        onChange={this.handleFilter}
-        value={this.state.filterInput}
-        placeholder="Filter articles by key words">
-    </Input>
+        <span>
+        <Input className="search-news"
+            icon="search"
+            name="searchInput"
+            onChange={this.handleFilter}
+            value={this.state.searchInput}
+            placeholder="Search for a stock">
+          </Input>
+          <Input className="filter-articles"
+            icon="search"
+            name="filterInput"
+            onChange={this.handleFilter}
+            value={this.state.filterInput}
+            placeholder="Filter articles by key words">
+          </Input>
+         
+
+
+        </span>
+    
+
         {!this.props.selectedStock ?
           <Card.Group className ="multiple-news-card-group" itemsPerRow={3}> 
             {this.filteredProfileNews().map((article, index) => <ProfileStockNewsItem article={article} key={index} />)}

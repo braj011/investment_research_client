@@ -34,7 +34,6 @@ class NavLogin extends React.Component {
 
   showGeneralNews = () => {    
     console.log("is this showGeneralNews function onClick running?")
-
     this.props.history.push('/')
     API.getNewsHeadlines()
       .then(articles => this.props.getNewsHeadlines(articles))
@@ -70,7 +69,6 @@ class NavLogin extends React.Component {
                 <div>
                   <Button bsStyle="info" className="btn-logout" onClick={signout}>Log Out</Button>
                   <span className="welcome-user">Welcome, {this.props.firstName} </span>
-                  
                 </div>
     
             }

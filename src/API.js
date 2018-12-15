@@ -2,8 +2,8 @@
 export default class API  {
 
   static getNewsHeadlines = () => {
-    return fetch('https://stock-note-server.herokuapp.com/news_apis/')
     // return fetch('https://stock-note-server.herokuapp.com/api/v1/news_apis/')
+    return fetch('http://localhost:3000/api/v1/news_apis/')
       .then(resp => resp.json())
       .then(newsData => {
         return newsData.articles.map(article => {
@@ -17,13 +17,14 @@ export default class API  {
   } 
 
   static init () {
-    this.baseUrl = 'https://stock-note-server.herokuapp.com'
     // this.baseUrl = 'https://stock-note-server.herokuapp.com/api/v1'
+    this.baseUrl = 'http://localhost:3000/api/v1'
     this.loginUrl = this.baseUrl + '/login'
     this.signupUrl = this.baseUrl + '/signup'
     this.validateUrl = this.baseUrl + '/validate'
 
     this.profileUrl = this.baseUrl + '/users'
+    this.searchNewsUrl = this.baseUrl + 'search_news'
 
     this.stockUrl = this.baseUrl + '/stocks'
     this.userStockUrl = this.baseUrl + '/user_stocks'
@@ -74,6 +75,19 @@ export default class API  {
 
   static getProfile (id) {
     return this.get(`${this.profileUrl}/${id}`)
+  }
+
+  static searchNews (searchTerm) {
+    return fetch('http://localhost:3000/api/v1/news_apis/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          'query': searchTerm.join(" OR "),
+          'sort': 'relevancy'
+        })
+      }).then(resp => resp.json())
+        .then(newsData => newsData.articles.filter(article => !!article.source.name)) 
+        .then(news => this.props.updateProfileNews(news))
   }
 
 
@@ -137,8 +151,8 @@ export default class API  {
 
   static getExistingNotes = (stock) => {
     const token = localStorage.getItem('token')
-    return fetch("https://stock-note-server.herokuapp.com/get_user_notes", {
     // return fetch("https://stock-note-server.herokuapp.com/api/v1/get_user_notes", {
+      return fetch("http://localhost:3000/api/v1/get_user_notes", {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',
