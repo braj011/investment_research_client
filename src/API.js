@@ -127,8 +127,6 @@ export default class API  {
     }).then(resp => resp.json())
   }
 
-
-
   //  NOTES
 
   static addNote (newNote, newNoteContent, newNoteUrl, notifDate, userStock) {
@@ -147,7 +145,8 @@ export default class API  {
         'notif_date' : notifDate,
         'stock_id': userStock.id
       })
-    }).then(resp => resp.json())  
+    }).then(data => console.log(data))
+    // .then(resp => resp.json())
   }
 
   static getExistingNotes = (stock) => {
