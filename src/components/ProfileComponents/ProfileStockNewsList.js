@@ -19,6 +19,10 @@ class ProfileStockNewsList extends Component {
     })
   }
 
+  searchNews = () => {
+    
+  }
+
   filteredProfileNews = () => {
     const filteredNews = [...this.props.profileNews]
     return filteredNews.filter(article => {

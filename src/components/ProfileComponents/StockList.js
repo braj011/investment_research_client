@@ -50,8 +50,8 @@ class StockList extends Component {
     }
   
   getSingleStocknews = (stock) => {
-    // return fetch('https://stock-note-server.herokuapp.com/api/v1/news_apis/', {
-    return fetch('http://localhost:3000/api/v1/news_apis/', {
+    return fetch('https://stock-note-server.herokuapp.com/api/v1/news_apis/', {
+    // return fetch('http://localhost:3000/api/v1/news_apis/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -62,7 +62,7 @@ class StockList extends Component {
     .then(news => this.props.updateProfileNews(news.articles))
   }
 
-  getStockData = (stock) => {
+ getStockData = (stock) => {
    let stockDataUrl = `https://api.iextrading.com/1.0/stock/` + stock.ticker + `/chart/1y`
    console.log("stockData Url:", stockDataUrl)
    return fetch(stockDataUrl)
