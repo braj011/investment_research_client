@@ -10,7 +10,7 @@
 - send themselves the notes by email now or at ata future date of their choosing.
 
 
-![Alt text](images/homePage.png)(images/mainProfile.png) 
+![Alt text](images/homePage.png)![Alt text](images/mainProfile.png) 
 
 
 
