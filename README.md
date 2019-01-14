@@ -10,7 +10,7 @@
 - send themselves the notes by email now or at ata future date of their choosing.
 
 
-![Screenshot](images/Screenshot 2019-01-14 at 12.43.58.png)
+![Screenshot](images/homePage.png)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
