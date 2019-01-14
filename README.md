@@ -31,7 +31,7 @@ Notes are ordered by most recent first.
 The stock data chart comes from the IEX trading data API (for US stocks only). This uses a stock ticker and is why the user must enter a stock ticker when adding a new stock. 
 The line chart is created using the React Chart js library. 
 
-
+----------------------------------------------------
 The app is live at http://stock-note.surge.sh/ with the backend hosted on Heroku. Upon arrival, the server may take a few seconds to post news onto the homepage. At this point, one can create an account and add stocks.
 
 NOTE: The deployment to production has a few bugs and I am working through these.
