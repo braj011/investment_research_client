@@ -1,3 +1,4 @@
+import config from './config'
 
 export default class API  {
 
@@ -17,8 +18,9 @@ export default class API  {
   } 
 
   static init () {
-    this.baseUrl = 'https://stock-note-server.herokuapp.com/api/v1'
-    // this.baseUrl = 'http://localhost:3000/api/v1'
+    this.baseUrl = config.URLS.LOCAL_URL
+    // this.baseUrl = config.URLS.HEROKU_URL
+    this.baseUrl = 'http://localhost:3000/api/v1'
     this.loginUrl = this.baseUrl + '/login'
     this.signupUrl = this.baseUrl + '/signup'
     this.validateUrl = this.baseUrl + '/validate'
