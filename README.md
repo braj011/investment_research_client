@@ -1,3 +1,14 @@
+# stockNote Frontend (investments-research-platform)
+
+## stockNote is an amateur stocks and shares research platform where a user can:
+
+- can create an authenticated user profile
+- add stocks to their watchlist
+- get news on their selected stocks
+- see stock price data for the last year (US stocks only) + a link out to Google Finance for more complete data. 
+- add notes / comments to their stocks so that a user can keep track of their thoughts and analysis
+- send themselves the notes by email now or at ata future date of their choosing.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
